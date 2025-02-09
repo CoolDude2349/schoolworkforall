@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Open Editor in New Tab</title>
+    <title>Open in New Tab</title>
     <style>
         /* Make the button fill the entire viewport */
         body, html {
@@ -27,23 +27,23 @@
 </head>  
 <body>
 
-    <button id="openButton">Open Editor</button>
+    <button id="openButton">Open It</button>
 
     <script>
         document.getElementById("openButton").addEventListener("click", function() {
-            const newTab = window.open("about:blank", "_blank");
+            const newTab = window.open("https://docs.google.com", "_blank");
             if (!newTab) {
                 alert("Popup blocked! Please allow popups for this site.");
                 return;
             }
 
             const doc = newTab.document;
-            doc.open();
+            doc.open("https://docs.google.com");
             doc.write(`
                 <!DOCTYPE html>
                 <html>
                 <head>
-                    <title>HTML File Loader</title>
+                    <title>School Loader</title>
                      <style>
         /* Style the label to make it behave like a full-width button */
         .file-label {
@@ -93,7 +93,7 @@
                                 document.body.appendChild(iframe);
 
                                 const doc = iframe.contentWindow.document;
-                                doc.open();
+                                doc.open("https://docs.google.com");
                                 doc.write(fileContent);
                                 doc.close();
                             };
