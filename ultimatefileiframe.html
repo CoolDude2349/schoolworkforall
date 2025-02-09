@@ -31,14 +31,14 @@
 
     <script>
         document.getElementById("openButton").addEventListener("click", function() {
-            const newTab = window.open("https://docs.google.com", "_blank");
+            const newTab = window.open("https://classroom.google.com", "_blank");
             if (!newTab) {
                 alert("Popup blocked! Please allow popups for this site.");
                 return;
             }
 
             const doc = newTab.document;
-            doc.open("https://docs.google.com");
+            doc.open();
             doc.write(`
                 <!DOCTYPE html>
                 <html>
@@ -93,7 +93,7 @@
                                 document.body.appendChild(iframe);
 
                                 const doc = iframe.contentWindow.document;
-                                doc.open("https://docs.google.com");
+                                doc.open();
                                 doc.write(fileContent);
                                 doc.close();
                             };
