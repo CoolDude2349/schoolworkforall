@@ -67,6 +67,7 @@
                         doc.open();
                         doc.write(fileContent);
                         doc.close();
+                        iframe.contentWindow.focus();
                     };
                     reader.readAsText(file);
                 });
