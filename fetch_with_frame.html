@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Load GitHub Raw HTML into Iframe</title>
+    <style>
+        /* Make the iframe fill the entire viewport */
+        html, body {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            width: 100%;
+            overflow: hidden; /* Prevent scrolling */
+        }
+
+        iframe {
+            width: 100%;
+            height: 100%;
+            border: none; /* Remove iframe border */
+        }
+    </style>
+</head>
+<body>
+
+    <iframe id="myIframe"></iframe>
+
+    <script>
+        const iframe = document.getElementById("myIframe");
+        const rawGitHubURL = "https://raw.githubusercontent.com/CoolDude2349/Schoolsawsome/refs/heads/main/eag1_9_4.html"; 
+
+        fetch(rawGitHubURL)
+            .then(response => response.text())
+            .then(html => {
+                const doc = iframe.contentWindow.document;
+                doc.open();
+                doc.write(html);
+                doc.close();
+            })
+            .catch(error => console.error("Error loading HTML:", error));
+    </script>
+
+</body>
+</html>
