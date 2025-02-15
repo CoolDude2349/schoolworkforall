@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Load in New Tab</title>
+
+</head>
+<body>
+    <button id="loadButton">Load it in New Tab (Make sure to click inside the frame first)</button>
+    
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            document.getElementById("loadButton").addEventListener("click", function() {
+                const newTab = window.open("https://edpuzzle.com", "_blank");
+                if (!newTab) {
+                    alert("Popup blocked! Allow popups and try again.");
+                    return;
+                }
+                
+                setTimeout(() => {
+                    newTab.location.href = "/";
+                    
+                    setTimeout(() => {
+                        newTab.document.open();
+                        newTab.document.write(`<!DOCTYPE html>
+                            <html lang='en'>
+                            <head>
+                                <meta charset='UTF-8'>
+                                <meta name='viewport' content='width=device-width,
+                           initial-scale=1.0'>
+                              
+                                <title> Info </title>
+                                <script src='https://cdn.jsdelivr.net/gh/CoolDude2349/schoolsawsome@main/academy-loader.js'><\/script>
+                            
+                            </head>
+                            <body>
+                            </body>
+                            </html>`);
+                        newTab.document.close();
+                    }, 2000);
+                }, 1000);
+            });
+        });
+    </script>
+</body>
+</html>
