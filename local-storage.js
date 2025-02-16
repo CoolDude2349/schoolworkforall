@@ -1,4 +1,4 @@
-// Function to cache HTML content with js
+// Function to cache HTML content with embedded JavaScript
 function cacheHTMLWithJS(key, htmlContent) {
     if (typeof(Storage) !== "undefined") {
         localStorage.setItem(key, htmlContent);
@@ -8,7 +8,7 @@ function cacheHTMLWithJS(key, htmlContent) {
     }
 }
 
-
+// Function to inject cached HTML with JavaScript
 function injectCachedHTMLWithJS(key) {
     const cachedHTML = localStorage.getItem(key);
     if (cachedHTML) {
@@ -16,9 +16,9 @@ function injectCachedHTMLWithJS(key) {
 
         const tempDiv = document.createElement("div");
         tempDiv.innerHTML = cachedHTML;
-
         document.body.appendChild(tempDiv);
 
+        // Execute any inline scripts
         const scripts = tempDiv.querySelectorAll("script");
         scripts.forEach(script => {
             const newScript = document.createElement("script");
@@ -30,9 +30,9 @@ function injectCachedHTMLWithJS(key) {
     }
 }
 
-// HTML content with embedded JavaScript to be cached
+// HTML content to be cached
 const htmlWithJS = `
-    <html>
+   <html>
     <head>
         <title>School Loader</title>
         <style>
@@ -75,20 +75,25 @@ const htmlWithJS = `
                 };
                 reader.readAsText(file);
             });
-        </script>
+        <\/script>
     </body>
     </html>
 `;
 
-// Cache the HTML with JavaScript
+// Cache the HTML
 cacheHTMLWithJS('offlinePageWithJS', htmlWithJS);
 
-// Check if the user is offline and inject cached HTML
+// Function to check if the service worker is enabled
+function isServiceWorkerEnabled() {
+    return 'serviceWorker' in navigator && navigator.serviceWorker.controller;
+}
+
+// Check conditions when the page loads
 window.onload = function() {
-    if (!navigator.onLine) { // This checks if the user is offline
-        console.log("User is offline. Loading cached content...");
+    if (!navigator.onLine && !isServiceWorkerEnabled()) { 
+        console.log("Offline and no service worker detected. Loading cached content...");
         injectCachedHTMLWithJS('offlinePageWithJS');
     } else {
-        console.log("User is online. No need to load cached content.");
+        console.log("Online or service worker is enabled. No need to load cache.");
     }
 };
