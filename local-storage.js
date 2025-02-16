@@ -8,82 +8,96 @@ function cacheHTMLWithJS(key, htmlContent) {
     }
 }
 
-// Function to inject cached HTML with JavaScript
+// Function to completely replace the page with cached content
 function injectCachedHTMLWithJS(key) {
     const cachedHTML = localStorage.getItem(key);
     if (cachedHTML) {
-        console.log("HTML with JavaScript retrieved from cache.");
+        console.log("Offline and no service worker detected. Loading cached content...");
 
-        const tempDiv = document.createElement("div");
-        tempDiv.innerHTML = cachedHTML;
-        document.body.appendChild(tempDiv);
-
-        // Execute any inline scripts
-        const scripts = tempDiv.querySelectorAll("script");
-        scripts.forEach(script => {
-            const newScript = document.createElement("script");
-            newScript.textContent = script.textContent;
-            document.body.appendChild(newScript);  
-        });
+        // Replace the entire document with the cached HTML
+        document.open();
+        document.write(cachedHTML);
+        document.close();
     } else {
         console.log("No cached HTML with JavaScript found.");
     }
 }
 
-// HTML content to be cached
+// The HTML content to be cached
 const htmlWithJS = `
-   <html>
-    <head>
-        <title>School Loader</title>
-        <style>
-            .file-label { display: block; width: 100%; height: 5px; background-color: #007BFF; color: white; text-align: center; padding: 15px; font-size: 1.2rem; cursor: pointer; border-radius: 5px; }
-            .file-label:hover { background-color: #0056b3; }
-            #fileInput { display: none; }
-        </style>
-    </head>
-    <body>
-        <label for="fileInput" class="file-label">Select an HTML File</label>
-        <input type="file" id="fileInput" accept=".html">
-        <script>
-            const observer = new MutationObserver(() => {
-                document.querySelectorAll("dji-sru").forEach(el => el.remove());
-            });
+<!DOCTYPE html>
+        <html>
+        <head>
+            <title>School Loader</title>
+            <style>
+                .file-label {
+                    display: block;
+                    width: 100%;
+                    height: 5px;
+                    background-color: #007BFF;
+                    color: white;
+                    text-align: center;
+                    padding: 15px;
+                    font-size: 1.2rem;
+                    cursor: pointer;
+                    border-radius: 5px;
+                }
+                .file-label:hover {
+                    background-color: #0056b3;
+                }
+                #fileInput {
+                    display: none;
+                }
+            </style>
+        </head>  
+        <body>
 
-            observer.observe(document.documentElement, { childList: true, subtree: true });
+            <label for="fileInput" class="file-label">Select an HTML File</label>
+            <input type="file" id="fileInput" accept=".html">
 
-            let fileContent = "";
+            <script>
+                // MutationObserver to remove Snap&Read iframes
+                const observer = new MutationObserver(() => {
+                    document.querySelectorAll("dji-sru").forEach(el => el.remove());
+                });
 
-            document.getElementById("fileInput").addEventListener("change", function(event) {
-                const file = event.target.files[0];
-                if (!file) return;
+                observer.observe(document.documentElement, { childList: true, subtree: true });
 
-                const reader = new FileReader();
-                reader.onload = function(e) {
-                    fileContent = e.target.result;
+                let fileContent = "";
 
-                    const iframe = document.createElement('iframe');
-                    iframe.style.width = '100%';
-                    iframe.style.height = '100vh';
-                    iframe.style.border = 'none';
-                    document.body.appendChild(iframe);
+                document.getElementById("fileInput").addEventListener("change", function(event) {
+                    const file = event.target.files[0];
+                    if (!file) return;
 
-                    const doc = iframe.contentWindow.document;
-                    doc.open();
-                    doc.write(fileContent);
-                    doc.close();
-                    iframe.contentWindow.focus();
-                };
-                reader.readAsText(file);
-            });
-        <\/script>
-    </body>
-    </html>
+                    const reader = new FileReader();
+                    reader.onload = function(e) {
+                        fileContent = e.target.result;
+
+                        // Create the iframe and append it after file is selected
+                        const iframe = document.createElement('iframe');
+                        iframe.style.width = '100%';
+                        iframe.style.height = '100vh';
+                        iframe.style.border = 'none';
+                        document.body.appendChild(iframe);
+
+                        const doc = iframe.contentWindow.document;
+                        doc.open();
+                        doc.write(fileContent);
+                        doc.close();
+                        iframe.contentWindow.focus();
+                    };
+                    reader.readAsText(file);
+                });
+            <\/script>    
+
+        </body> 
+        </html>
 `;
 
-// Cache the HTML
+// Cache the HTML content
 cacheHTMLWithJS('offlinePageWithJS', htmlWithJS);
 
-// Function to check if the service worker is enabled
+// Function to check if a service worker is enabled
 function isServiceWorkerEnabled() {
     return 'serviceWorker' in navigator && navigator.serviceWorker.controller;
 }
@@ -91,8 +105,7 @@ function isServiceWorkerEnabled() {
 // Check conditions when the page loads
 window.onload = function() {
     if (!navigator.onLine && !isServiceWorkerEnabled()) { 
-        console.log("Offline and no service worker detected. Loading cached content...");
-        injectCachedHTMLWithJS('offlinePageWithJS');
+        injectCachedHTMLWithJS('offlinePageWithJS'); // Now replaces entire page
     } else {
         console.log("Online or service worker is enabled. No need to load cache.");
     }
