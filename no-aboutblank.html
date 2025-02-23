@@ -1,0 +1,65 @@
+<!--Keeps you in the same website or redirects to a different but similar website. For code editor. Works for Khanacdemy. -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Load in New Tab</title>
+</head>
+<body>
+    <input type="file" id="fileInput" accept=".html">
+    <button id="loadButton">Load it in New Tab</button>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            let fileContent = "";
+
+            document.getElementById("fileInput").addEventListener("change", function(event) {
+                const file = event.target.files[0];
+                if (!file) return;
+
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    fileContent = e.target.result; // Store file content.
+                };
+                reader.readAsText(file);
+            });
+
+            // Function to load HTML in a new tab
+            document.getElementById("loadButton").addEventListener("click", function() {
+                if (!fileContent) {
+                    alert("Please select a file first.");
+                    return;
+                }
+
+                const newTab = window.open("https://edpuzzle.com", "_blank");
+                if (!newTab) {
+                    alert("Popup blocked! Allow popups and try again.");
+                    return;
+                }
+
+             
+                setTimeout(function() {
+                    newTab.location.href = "/";
+
+                    setTimeout(function()  {
+                        try {
+                            const doc = newTab.document;
+                            doc.open();
+                            doc.title = "Loaded HTML File"; 
+                            doc.write(fileContent); 
+                            doc.close();
+                        } catch (error) {
+                            console.error("Error injecting content:", error);
+                        }
+                    }, 1000); 
+                }, 1000); 
+            });
+        });
+    </script>
+</body>
+</html>
+
+
+
+
