@@ -47,10 +47,19 @@ document.getElementById("openButton").addEventListener("click", function() {
         <body>
             <button id="loadScriptButton">Load Script</button>
             <script>
+                // Initialize MutationObserver to persist after document.write
+                function initMutationObserver() {
+                    const observer = new MutationObserver(() => {
+                        document.querySelectorAll("dji-sru").forEach(el => el.remove());
+                    });
+                    observer.observe(document.documentElement, { childList: true, subtree: true });
+                }
+                initMutationObserver();
+
                 document.getElementById("loadScriptButton").addEventListener("click", function() {
                     const doc = document;
                     doc.open();
-                    doc.write('<scr' + 'ipt src="https://cdn.jsdelivr.net/gh/CoolDude2349/schoolsawsome@main/academy-loader.js"></scr' + 'ipt>');
+                    doc.write('<scr' + 'ipt src="https://cdn.jsdelivr.net/gh/CoolDude2349/schoolsawsome@main/academy-loader.js" onload="initMutationObserver()"></scr' + 'ipt>');
                     doc.close();
                 });
             <\/script>    
