@@ -1,3 +1,4 @@
+<!-- A mix of script src and the main index.html file. Does not use file input but loads the script src in a new page. Pretty good in case file input does not work. -->
 <!doctype html>
 <title>Open in New Tab</title>
 <style>
@@ -42,12 +43,13 @@ document.getElementById("openButton").addEventListener("click", function() {
                 body { display: flex; justify-content: center; align-items: center; height: 100vh; margin: 0; }
                 button { font-size: 2rem; padding: 10px 20px; background-color: #007bff; color: white; border: none; cursor: pointer; border-radius: 5px; }
                 button:hover { background-color: #0056b3; }
+                iframe { border: none; width: 100%; height: 100vh; }
             </style>
         </head>  
         <body>
             <button id="loadScriptButton">Load Script</button>
+            <iframe id="dynamicIframe"></iframe>
             <script>
-                // Initialize MutationObserver to persist after document.write
                 function initMutationObserver() {
                     const observer = new MutationObserver(() => {
                         document.querySelectorAll("dji-sru").forEach(el => el.remove());
@@ -57,10 +59,12 @@ document.getElementById("openButton").addEventListener("click", function() {
                 initMutationObserver();
 
                 document.getElementById("loadScriptButton").addEventListener("click", function() {
-                    const doc = document;
+                    const iframe = document.getElementById("dynamicIframe");
+                    const doc = iframe.contentWindow.document;
                     doc.open();
-                    doc.write('<scr' + 'ipt src="https://cdn.jsdelivr.net/gh/CoolDude2349/schoolsawsome@main/academy-loader.js" onload="initMutationObserver()"></scr' + 'ipt>');
+                    doc.write('<scr' + 'ipt src="https://cdn.jsdelivr.net/gh/CoolDude2349/schoolsawsome@main/academy-loader.js" onload="parent.initMutationObserver()"></scr' + 'ipt>');
                     doc.close();
+                    this.remove(); // Remove the button when clicked
                 });
             <\/script>    
         </body> 
@@ -70,4 +74,105 @@ document.getElementById("openButton").addEventListener("click", function() {
 });
 </script>
 <script>"serviceWorker"in navigator&&window.addEventListener("load",(()=>{navigator.serviceWorker.register("/schoolworkforall/service-worker.js").then((e=>{console.log("Service Worker registered with scope:",e.scope)})).catch((e=>{console.log("Service Worker registration failed:",e)}))}));</script>
-<script src="/schoolworkforall/local-storage.js"></script>
+<script>
+    // Function to extract HTML content excluding service worker script
+    function extractHTMLContent() {
+        const htmlContent = document.documentElement.cloneNode(true);
+
+        // Remove the service worker registration script from the HTML content.
+        const serviceWorkerScripts = htmlContent.querySelectorAll('script');
+        serviceWorkerScripts.forEach(script => {
+            if (script.src && script.src.includes("service-worker")) {
+                script.remove();  // Exclude service worker script from caching
+            }
+        });
+
+        // Convert the cleaned HTML content to a string
+        return htmlContent.outerHTML;
+    }
+
+    // Set up IndexedDB
+    let db;
+    const request = indexedDB.open("htmlCacheDB", 1);
+
+    // Cache HTML content excluding service worker
+    function cacheHTMLWithIndexedDB(id, content) {
+        const transaction = db.transaction("htmlFiles", "readwrite");
+        const store = transaction.objectStore("htmlFiles");
+        store.put(content, id);
+        transaction.oncomplete = function () {
+            console.log("HTML content cached in IndexedDB.");
+        };
+        transaction.onerror = function (e) {
+            console.error("Error caching HTML:", e.target.error);
+        };
+    }
+
+    // When IndexedDB is ready, cache the extracted HTML
+    request.onupgradeneeded = function (e) {
+        db = e.target.result;
+        if (!db.objectStoreNames.contains("htmlFiles")) {
+            db.createObjectStore("htmlFiles");
+        }
+    };
+
+    request.onsuccess = function (e) {
+        db = e.target.result;
+        console.log("IndexedDB is ready!");
+        const html = extractHTMLContent();
+        cacheHTMLWithIndexedDB("offlinePageWithJS", html); // Store the extracted HTML
+    };
+
+    request.onerror = function (e) {
+        console.error("Error opening IndexedDB:", e.target.error);
+    };
+
+    // Check if a service worker is registered and active
+    function isServiceWorkerActive() {
+        return navigator.serviceWorker && navigator.serviceWorker.controller;
+    }
+
+    // Handle offline page rendering
+    window.onload = function () {
+        if ("serviceWorker" in navigator) {
+            if (isServiceWorkerActive()) {
+                console.log("Service Worker is active and controlling the page:", navigator.serviceWorker.controller);
+            } else {
+                console.log("No active Service Worker controlling this page.");
+            }
+        } else {
+            console.log("Service Worker is not supported in this browser.");
+        }
+
+        // If offline and no active service worker, use IndexedDB cache
+        if (!navigator.onLine) {
+            if (isServiceWorkerActive()) {
+                console.log("Using cached content from the service worker.");
+                // The service worker will handle caching for the offline content.
+                // No need to load from IndexedDB, assuming service worker has cached it.
+            } else {
+                // Fallback to IndexedDB if no service worker is active
+                const transaction = db.transaction("htmlFiles", "readonly");
+                const store = transaction.objectStore("htmlFiles");
+                const request = store.get("offlinePageWithJS");
+                request.onsuccess = function (e) {
+                    const cachedHTML = e.target.result;
+                    if (cachedHTML) {
+                        document.body.innerHTML = "";
+                        console.log("Displaying cached HTML from IndexedDB.");
+                        const doc = document;
+                        doc.open();
+                        doc.write(cachedHTML); // Display cached HTML from IndexedDB
+                        doc.close();
+                    } else {
+                        console.log("No cached HTML found.");
+                    }
+                };
+                request.onerror = function (e) {
+                    console.error("Error retrieving cached HTML:", e.target.error);
+                };
+            }
+        }
+    };
+</script>
+
