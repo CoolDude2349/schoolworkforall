@@ -1,0 +1,49 @@
+<!-- Just the drag and drop file but can be viewable offline. 
+When you go to about:blank, you may need to go back online to drag the file if your using a cloud storage site like Canvas. 
+But if you are using your local file storage, then you're good. -->
+
+<!doctype html>
+<title>School Work</title>
+<style>
+    body,html {
+        height: 100%;
+        width: 100%;
+        margin: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    button {
+        width: 100%;
+        height: 100%;
+        font-size: 2rem;
+        border: none;
+        background-color: #007bff;
+        color: #fff;
+        cursor: pointer;
+    }
+    button:hover {
+        background-color: #0056b3;
+    }
+</style>
+<button id=openButton>Open It</button>
+<script>
+document.getElementById("openButton").addEventListener("click", function() {
+    const newTab = window.open("https://classroom.google.com", "_blank");  
+    if (!newTab) {
+        alert("Popup blocked! Please allow popups for this site.");
+        return;
+    }
+
+    const doc = newTab.document;
+    doc.open();
+    doc.write(`
+       
+<!doctypehtml><html lang=en><meta charset=UTF-8><meta content="width=device-width,initial-scale=1"name=viewport><title>Drag and Drop File</title><style>#drop-area{width:400px;height:200px;border:2px dashed #aaa;text-align:center;line-height:200px;font-size:18px;color:#555;margin-bottom:20px;position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);background:#fff;z-index:10}iframe{position:absolute;top:0;left:0;width:100vw;height:100vh;border:none}</style><div id=drop-area>Drag file here</div><iframe id=file-content></iframe><script>const dropArea=document.getElementById("drop-area"),iframe=document.getElementById("file-content");dropArea.addEventListener("dragover",(e=>{e.preventDefault(),dropArea.style.backgroundColor="#f0f0f0"})),dropArea.addEventListener("dragleave",(()=>{dropArea.style.backgroundColor=""})),dropArea.addEventListener("drop",(e=>{e.preventDefault(),dropArea.style.backgroundColor="";const r=e.dataTransfer.files[0];if(r){const e=new FileReader;e.onload=function(e){const r=iframe.contentDocument||iframe.contentWindow.document;r.open(),r.write(e.target.result),r.close(),dropArea.style.display="none"},e.readAsText(r)}}));<\/script> 
+
+    `);
+    doc.close();
+});
+</script>
+<script>"serviceWorker"in navigator&&window.addEventListener("load",(()=>{navigator.serviceWorker.register("/schoolworkforall/service-worker.js").then((e=>{console.log("Service Worker registered with scope:",e.scope)})).catch((e=>{console.log("Service Worker registration failed:",e)}))}));</script>
+<script>function extractHTMLContent(){const e=document.documentElement.cloneNode(!0);return e.querySelectorAll("script").forEach((e=>{e.src&&e.src.includes("service-worker")&&e.remove()})),e.outerHTML}let db;const request=indexedDB.open("htmlCacheDB",1);function cacheHTMLWithIndexedDB(e,o){const r=db.transaction("htmlFiles","readwrite");r.objectStore("htmlFiles").put(o,e),r.oncomplete=function(){console.log("HTML content cached in IndexedDB.")},r.onerror=function(e){console.error("Error caching HTML:",e.target.error)}}function isServiceWorkerActive(){return navigator.serviceWorker&&navigator.serviceWorker.controller}request.onupgradeneeded=function(e){db=e.target.result,db.objectStoreNames.contains("htmlFiles")||db.createObjectStore("htmlFiles")},request.onsuccess=function(e){db=e.target.result,console.log("IndexedDB is ready!");cacheHTMLWithIndexedDB("offlinePageWithJS",extractHTMLContent())},request.onerror=function(e){console.error("Error opening IndexedDB:",e.target.error)},window.onload=function(){if("serviceWorker"in navigator?isServiceWorkerActive()?console.log("Service Worker is active and controlling the page:",navigator.serviceWorker.controller):console.log("No active Service Worker controlling this page."):console.log("Service Worker is not supported in this browser."),!navigator.onLine)if(isServiceWorkerActive())console.log("Using cached content from the service worker.");else{const e=db.transaction("htmlFiles","readonly").objectStore("htmlFiles").get("offlinePageWithJS");e.onsuccess=function(e){const o=e.target.result;if(o){document.body.innerHTML="",console.log("Displaying cached HTML from IndexedDB.");const e=document;e.open(),e.write(o),e.close()}else console.log("No cached HTML found.")},e.onerror=function(e){console.error("Error retrieving cached HTML:",e.target.error)}}};</script>
