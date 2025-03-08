@@ -11,6 +11,7 @@ Links for the most op pages (for offline mode):
 https://cooldude2349.github.io/schoolworkforall/
 https://cooldude2349.github.io/schoolworkforall/fetch/script-src-ultimate.html
 https://cooldude2349.github.io/schoolworkforall/code-inputer.html
+https://cooldude2349.github.io/schoolworkforall/drag-file-aboutblank.html
 
 Links for code to place in code editors:
 
