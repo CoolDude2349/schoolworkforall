@@ -1,0 +1,111 @@
+<!-- For Khan Academy. It's a bit more harder to load the educational block game though (there's a bug) 
+For block game: 
+1. First click the button.
+2. Then after the loading bar loads, immediately click back to Khanacademy tab. 
+3. Do steps 1 and 2 again.
+4. Wait a bit and hover your cursor over the first ever new page tab you opened. (Not yet clicking on it though)
+5. Click on the tab.
+6. Close the second new page tab that you opened.
+
+If the bar progresses smooth and quickly, or it just does not do anything, do steps 1-6 again. You can't have the second new page tab progress the bar.
+
+If the bar loads slowly, then you did it right!
+
+-->
+
+
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Load It</title>
+  <style>
+    
+    #cooldownBar {
+      width: 100%;
+      background-color: #e0e0e0;
+    }
+    #cooldownBarFill {
+      height: 20px;
+      width: 0;
+      background-color: green;
+      transition: width 1s linear;
+    }
+  </style>
+</head>
+<body>
+
+  
+  <button onclick="loadExternalHTML()">Load it</button>
+
+  <div id="cooldownBar">
+    <div id="cooldownBarFill"></div>
+  </div>
+
+  <script type="text/javascript">
+    
+    function loadExternalHTML() {
+      
+      var newWindow = window.open('https://classroom.google.com', '_blank');
+      newWindow.document.open()
+      newWindow.document.write()
+      newWindow.document.close()
+      
+      var iframe = newWindow.document.createElement('iframe');
+      iframe.style.width = '100%';
+      iframe.style.height = '100%';
+      
+     
+      iframe.sandbox = 'allow-scripts allow-same-origin allow-pointer-lock'; 
+
+  
+      iframe.src = "/"
+     
+      newWindow.document.body.appendChild(iframe);
+       iframe.contentWindow.focus();
+
+
+      
+      iframe.onload = function() {
+        var iframeDoc = iframe.contentWindow.document;
+        
+     
+        if (!iframeDoc.querySelector('script[src="https://cdn.jsdelivr.net/gh/CoolDude2349/schoolsawsome@main/academy-loader-open.js"]')) {
+          var script = iframeDoc.createElement('script');
+          script.src = 'https://cdn.jsdelivr.net/gh/CoolDude2349/schoolsawsome@main/academy-loader-open.js';
+
+          script.onload = function() {
+            console.log('External script loaded!');
+            
+       
+            var savedProgress = sessionStorage.getItem('cooldownProgress');
+            if (savedProgress) {
+             
+              document.getElementById('cooldownBarFill').style.width = savedProgress + '%';
+            }
+            
+          
+            var progress = 0;
+            var interval = setInterval(function() {
+              progress += 1;
+              document.getElementById('cooldownBarFill').style.width = progress + '%';
+             
+              sessionStorage.setItem('cooldownProgress', progress);
+              
+              if (progress >= 100) {
+                clearInterval(interval);
+              }
+            }, 100); 
+          };
+
+          iframeDoc.body.appendChild(script);
+        }
+      };
+      
+   
+      newWindow.document.close();
+    }
+  </script>
+
+</body>
+</html>
