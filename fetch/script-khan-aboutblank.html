@@ -1,18 +1,5 @@
-<!-- For Khan Academy. Very op. It's a bit more harder to load the educational block game though (there's a bug) 
-For block game: 
-1. First click the button.
-2. Then after the loading bar loads, immediately click back to Khanacademy tab. 
-3. Do steps 1 and 2 again.
-4. Wait a bit and hover your cursor over the first ever new page tab you opened. (Not yet clicking on it though)
-5. Click on the tab.
-6. Close the second new page tab that you opened.
-
-If the bar progresses smooth and quickly, or it just does not do anything, do steps 1-6 again. You can't have the second new page tab progress the bar.
-
-If the bar loads slowly, or the bar loads slowly and then picks up some speed, then you did it right!
-
+<!-- For Khan Academy. Very op. It's a bit more harder to load the educational block game though 
 Make sure to click inside the frame while the content screen (eagtek) is loading to not get stuck!
-
 -->
 
 
@@ -65,10 +52,12 @@ Make sure to click inside the frame while the content screen (eagtek) is loading
      
       newWindow.document.body.appendChild(iframe);
        iframe.contentWindow.focus();
-
+		let db = 0
 
       
       iframe.onload = function() {
+      	if (db === 0) {
+        db = 1
         var iframeDoc = iframe.contentWindow.document;
         
      
@@ -106,6 +95,7 @@ Make sure to click inside the frame while the content screen (eagtek) is loading
       
    
       newWindow.document.close();
+      }
     }
   </script>
 
