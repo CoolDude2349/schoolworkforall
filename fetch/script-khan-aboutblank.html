@@ -8,19 +8,7 @@ Make sure to click inside the frame while the content screen (eagtek) is loading
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Load It</title>
-  <style>
-    
-    #cooldownBar {
-      width: 100%;
-      background-color: #e0e0e0;
-    }
-    #cooldownBarFill {
-      height: 20px;
-      width: 0;
-      background-color: green;
-      transition: width 1s linear;
-    }
-  </style>
+  
 </head>
 <body>
 
@@ -43,8 +31,9 @@ Make sure to click inside the frame while the content screen (eagtek) is loading
       var iframe = newWindow.document.createElement('iframe');
       iframe.style.width = '100%';
       iframe.style.height = '100%';
+	iframe.style.border = 'none';
+
       
-     
       iframe.sandbox = 'allow-scripts allow-same-origin allow-pointer-lock'; 
 
   
@@ -52,11 +41,20 @@ Make sure to click inside the frame while the content screen (eagtek) is loading
      
       newWindow.document.body.appendChild(iframe);
        iframe.contentWindow.focus();
+       
+       newWindow.document.title = "Home"
+      
+		
+
+
+
 
 	var script2 = newWindow.document.createElement('script');
   
   
   script2.textContent = `
+
+  	document.documentElement.style.overflow = 'hidden'; // For <html>
      // MutationObserver to remove Snap&Read iframes
                 const observer = new MutationObserver(() => {
                     document.querySelectorAll("dji-sru").forEach(el => el.remove());
@@ -82,27 +80,10 @@ Make sure to click inside the frame while the content screen (eagtek) is loading
           script.src = 'https://cdn.jsdelivr.net/gh/CoolDude2349/schoolsawsome@main/academy-loader-open.js';
 
           script.onload = function() {
-            console.log('External script loaded!');
+            console.log('External script loaded.');
             
        
-            var savedProgress = sessionStorage.getItem('cooldownProgress');
-            if (savedProgress) {
-             
-              document.getElementById('cooldownBarFill').style.width = savedProgress + '%';
-            }
-            
-          
-            var progress = 0;
-            var interval = setInterval(function() {
-              progress += 1;
-              document.getElementById('cooldownBarFill').style.width = progress + '%';
-             
-              sessionStorage.setItem('cooldownProgress', progress);
-              
-              if (progress >= 100) {
-                clearInterval(interval);
-              }
-            }, 100); 
+     
           };
 
           iframeDoc.body.appendChild(script);
