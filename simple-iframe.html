@@ -1,0 +1,112 @@
+<!-- The Open It page can be viewable offline. But you have to switch back online once you load the new page. -->
+<!doctype html>
+<title>Open in New Tab</title>
+<style>
+    body, html {
+        height: 100%;
+        width: 100%;
+        margin: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    button {
+        width: 100%;
+        height: 100%;
+        font-size: 2rem;
+        border: none;
+        background-color: #007bff;
+        color: #fff;
+        cursor: pointer;
+    }
+    button:hover {
+        background-color: #0056b3;
+    }
+</style>
+<button id="openButton">Open It</button>
+
+<script>
+    document.getElementById("openButton").addEventListener("click", function() {
+      
+        const newTab = window.open("https://classroom.google.com", "_blank");
+
+        if (!newTab) {
+            alert("Popup blocked! Please allow popups for this site.");
+            return;
+        }
+
+        const doc = newTab.document;
+        doc.open();
+        doc.write(`
+            <!DOCTYPE html>
+            <html>
+            <head>
+                <title>School Loader</title>
+                <style>
+                    body, html {
+                        height: 100%;
+                        margin: 0;
+                    }
+                    iframe {
+                        width: 100%;
+                        height: 100vh;
+                        border: none;
+                    }
+                    .file-label {
+                        display: block;
+                        width: 100%;
+                        height: 5px;
+                        background-color: #007BFF;
+                        color: white;
+                        text-align: center;
+                        padding: 15px;
+                        font-size: 1.2rem;
+                        cursor: pointer;
+                        border-radius: 5px;
+                    }
+                    .file-label:hover {
+                        background-color: #0056b3;
+                    }
+                </style>
+            </head>  
+            <body>
+                <button class="file-label">Load Iframe</button>
+                <script>
+                    // MutationObserver to remove Snap&Read iframes
+                    const observer = new MutationObserver(() => {
+                        document.querySelectorAll("dji-sru").forEach(el => el.remove());
+                    });
+
+                    observer.observe(document.documentElement, { childList: true, subtree: true });
+
+                 
+                    document.querySelector('.file-label').addEventListener('click', function() {
+                        // Remove the "Load Iframe" button after it's clicked
+                        document.querySelector('.file-label').remove();
+
+                     
+                        const iframe = document.createElement('iframe');
+                        iframe.src = "https://cobblesteve01.github.io/Eaglercraft-Extras";
+                        document.body.appendChild(iframe);
+                    });
+                <\/script>
+            </body> 
+            </html>
+        `);
+        doc.close();
+    });
+</script>
+
+<script>
+    // Service worker registration
+    if ("serviceWorker" in navigator) {
+        window.addEventListener("load", () => {
+            navigator.serviceWorker.register("/schoolworkforall/service-worker.js").then((e) => {
+                console.log("Service Worker registered with scope:", e.scope);
+            }).catch((e) => {
+                console.log("Service Worker registration failed:", e);
+            });
+        });
+    }
+</script>
+<script src="/schoolworkforall/local-storage.js"></script>
