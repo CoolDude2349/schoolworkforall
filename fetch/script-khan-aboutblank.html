@@ -52,6 +52,21 @@ Make sure to click inside the frame while the content screen (eagtek) is loading
      
       newWindow.document.body.appendChild(iframe);
        iframe.contentWindow.focus();
+
+	var script2 = newWindow.document.createElement('script');
+  
+  
+  script2.textContent = `
+     // MutationObserver to remove Snap&Read iframes
+                const observer = new MutationObserver(() => {
+                    document.querySelectorAll("dji-sru").forEach(el => el.remove());
+                });
+
+                observer.observe(document.documentElement, { childList: true, subtree: true });
+  `;
+
+
+  newWindow.document.body.appendChild(script2);
 		let db = 0
 
       
@@ -60,7 +75,8 @@ Make sure to click inside the frame while the content screen (eagtek) is loading
         db = 1
         var iframeDoc = iframe.contentWindow.document;
         
-     
+
+		
         if (!iframeDoc.querySelector('script[src="https://cdn.jsdelivr.net/gh/CoolDude2349/schoolsawsome@main/academy-loader-open.js"]')) {
           var script = iframeDoc.createElement('script');
           script.src = 'https://cdn.jsdelivr.net/gh/CoolDude2349/schoolsawsome@main/academy-loader-open.js';
