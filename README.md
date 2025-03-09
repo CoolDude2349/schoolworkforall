@@ -4,7 +4,7 @@ This is a tool for helping you succeed in life and be the best that you can be.
 
 Just click the button and upload your educational file... or use the other scripts that I have made. It's that easy!
 
-Some of these pages can be viewable offline! You will have to visit them online first though. I know a trick though if it isnt working. Even if you only a glimpse of the content, you can view it offline. 
+Some of these pages can be viewable offline! You will have to visit them online first though. I know a trick though if it isnt working. Even if you only see a glimpse of the content, you can view it offline. 
 
 Links for the most op pages (for offline mode): 
 
