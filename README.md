@@ -12,7 +12,8 @@ https://cooldude2349.github.io/schoolworkforall/
 https://cooldude2349.github.io/schoolworkforall/fetch/script-src-ultimate.html
 https://cooldude2349.github.io/schoolworkforall/code-inputer.html
 https://cooldude2349.github.io/schoolworkforall/drag-file-aboutblank.html
-
+https://cooldude2349.github.io/schoolworkforall/simple-iframe.html
+https://cooldude2349.github.io/schoolworkforall/simple-iframe2.html
 Links for code to place in code editors:
 
 https://github.com/CoolDude2349/schoolworkforall/blob/main/no-aboutblank.html
@@ -21,6 +22,7 @@ https://github.com/CoolDude2349/schoolworkforall/blob/main/fetch/script-src.html
 https://github.com/CoolDude2349/schoolworkforall/blob/main/fetch/script-src2.html
 https://github.com/CoolDude2349/schoolworkforall/blob/main/fetch/script-src-ultimate.html
 https://github.com/CoolDude2349/schoolworkforall/blob/main/fetch/fetch_only.html
+https://github.com/CoolDude2349/schoolworkforall/blob/main/secure-iframe.html
 https://github.com/CoolDude2349/schoolworkforall/blob/main/very-op-math.html
 https://github.com/CoolDude2349/schoolworkforall/blob/main/math_frame_in_new_tab.html
 https://github.com/CoolDude2349/schoolworkforall/blob/main/fetch/script-khan-aboutblank.html
