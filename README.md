@@ -27,5 +27,6 @@ https://github.com/CoolDude2349/schoolworkforall/blob/main/secure-iframe.html
 https://github.com/CoolDude2349/schoolworkforall/blob/main/very-op-math.html
 https://github.com/CoolDude2349/schoolworkforall/blob/main/math_frame_in_new_tab.html
 https://github.com/CoolDude2349/schoolworkforall/blob/main/fetch/script-khan-aboutblank.html
+https://github.com/CoolDude2349/schoolworkforall/blob/main/fetch/script-src-in-khan.html
 
 Have fun learning!!
