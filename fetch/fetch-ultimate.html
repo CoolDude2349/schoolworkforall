@@ -76,17 +76,7 @@ document.getElementById("openButton").addEventListener("click", function() {
             .then(html => {
                 const doc = document
                 doc.open();
-                doc.write(html + 
-                '<script>\n' +
-                'function initMutationObserver() {\n' +
-                '    const observer = new MutationObserver(() => {\n' +
-                '        document.querySelectorAll("dji-sru").forEach(el => el.remove());\n' +
-                '    });\n' +
-                '    observer.observe(document.documentElement, { childList: true, subtree: true });\n' +
-                '}\n' +
-                'window.onload = initMutationObserver;\n' +
-                '<\\/script>'
-            );
+                doc.write(html);
                 doc.close();
             })
             .catch(error => console.error("Error loading HTML:", error));
