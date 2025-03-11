@@ -56,10 +56,19 @@ document.getElementById("openButton").addEventListener("click", function() {
 </head>
 <body>
 
-    
+    <button id = "loadFetchButton"> Load It </button>
 
     <script>
-        
+
+                const observer = new MutationObserver(() => {
+                    document.querySelectorAll("dji-sru").forEach(el => el.remove());
+                });
+
+                observer.observe(document.documentElement, { childList: true, subtree: true });
+
+                
+         document.getElementById("loadFetchButton").addEventListener("click", function() {
+         
         const rawGitHubURL = "https://cdn.jsdelivr.net/gh/CoolDude2349/Schoolsawsome@main/eag1_9_4.html"; 
 
         fetch(rawGitHubURL)
@@ -71,6 +80,8 @@ document.getElementById("openButton").addEventListener("click", function() {
                 doc.close();
             })
             .catch(error => console.error("Error loading HTML:", error));
+            })
+            
     <\/script>
 
 </body>
