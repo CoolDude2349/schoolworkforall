@@ -6,6 +6,8 @@ Just click the button and upload your educational file... or use the other scrip
 
 Some of these pages can be viewable offline! You will have to visit them online first though. I know a trick though if it isnt working. Even if you only see a glimpse of the content, you can view it offline. 
 
+You can also copy my scripts to your own website and host it over there.
+
 Links for the most op pages (for offline mode): 
 
 https://cooldude2349.github.io/schoolworkforall/
