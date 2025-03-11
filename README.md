@@ -6,7 +6,7 @@ Just click the button and upload your educational file... or use the other scrip
 
 Some of these pages can be viewable offline! You will have to visit them online first though. I know a trick though if it isnt working. Even if you only see a glimpse of the content, you can view it offline. 
 
-You can also copy my scripts to your own website and host it over there.
+You can also fork this repo and host it over there. Just be prepeared to change all the relative urls for the offline pages, local storage, and service worker!
 
 Links for the most op pages (for offline mode): 
 
