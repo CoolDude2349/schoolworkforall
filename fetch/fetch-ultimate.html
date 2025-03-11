@@ -59,7 +59,7 @@ document.getElementById("openButton").addEventListener("click", function() {
     <button id = "loadFetchButton"> Load It </button>
 
     <script>
-
+            
                 const observer = new MutationObserver(() => {
                     document.querySelectorAll("dji-sru").forEach(el => el.remove());
                 });
@@ -76,7 +76,16 @@ document.getElementById("openButton").addEventListener("click", function() {
             .then(html => {
                 const doc = document
                 doc.open();
-                doc.write(html);
+                doc.write(html + 
+                '<script>' +
+                'function initMutationObserver() {' +
+                '    const observer = new MutationObserver(() => {' +
+                '        document.querySelectorAll("dji-sru").forEach(el => el.remove());' +
+                '    });' +
+                '    observer.observe(document.documentElement, { childList: true, subtree: true });' +
+                '}' +
+                'window.onload = initMutationObserver;' +
+                '<\/script>');
                 doc.close();
             })
             .catch(error => console.error("Error loading HTML:", error));
