@@ -1,0 +1,96 @@
+<!-- Makes eagtek work now using an iframe as a container. --> 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Load in New Tab</title>
+  <style>
+iframe {
+            margin: 0px;
+            padding: 0px;
+            height: 100%;
+            border: none;
+        }
+        
+        iframe {
+            display: block;
+            width: 100%;
+            border: none;
+            overflow-y: auto;
+            overflow-x: hidden;
+        }
+  
+  </style>
+</head>
+<body>
+    <input type="file" id="fileInput" accept=".html">
+    <button id="loadButton">Load it in New Tab </button>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            let fileContent = "";
+
+         
+            document.getElementById("fileInput").addEventListener("change", function(event) {
+                const file = event.target.files[0];
+                if (!file) return;
+
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    fileContent = e.target.result; 
+                };
+                reader.readAsText(file); 
+            });
+
+            
+           document.getElementById("loadButton").addEventListener("click", function() {
+    if (!fileContent) {
+        alert("Please select a file first.");
+        return;
+    }
+
+   
+   
+
+    const newTab = window.open("https://docs.google.com", "_blank");
+    if (!newTab) {
+        alert("Popup blocked! Allow popups and try again.");
+        return;
+    }
+    newTab.document.open();
+    newTab.document.title = "My Classes"; 
+    newTab.document.write();
+    newTab.document.close();
+
+     const observer = new MutationObserver(() => {
+                    newTab.document.querySelectorAll("dji-sru").forEach(el => el.remove());
+                });
+
+                observer.observe(newTab.document.documentElement, { childList: true, subtree: true });
+
+    const iframe = newTab.document.createElement('iframe');
+    iframe.style.width = '100%';
+    iframe.style.height = '100vh';
+    iframe.style.border = 'none';
+    newTab.document.body.appendChild(iframe);
+
+                        const doc = iframe.contentWindow.document;
+                        doc.open();
+                        doc.write(fileContent);
+                        doc.close();
+                        iframe.contentWindow.focus();
+             
+  
+});
+
+        });
+    </script>
+  <script>"serviceWorker"in navigator&&window.addEventListener("load",(()=>{navigator.serviceWorker.register("/schoolworkforall/service-worker.js").then((e=>{console.log("Service Worker registered with scope:",e.scope)})).catch((e=>{console.log("Service Worker registration failed:",e)}))}));</script>
+  <script>function extractHTMLContent(){const e=document.documentElement.cloneNode(!0);return e.querySelectorAll("script").forEach((e=>{e.src&&e.src.includes("service-worker")&&e.remove()})),e.outerHTML}let db;const request=indexedDB.open("htmlCacheDB",1);function cacheHTMLWithIndexedDB(e,o){const r=db.transaction("htmlFiles","readwrite");r.objectStore("htmlFiles").put(o,e),r.oncomplete=function(){console.log("HTML content cached in IndexedDB.")},r.onerror=function(e){console.error("Error caching HTML:",e.target.error)}}function isServiceWorkerActive(){return navigator.serviceWorker&&navigator.serviceWorker.controller}request.onupgradeneeded=function(e){db=e.target.result,db.objectStoreNames.contains("htmlFiles")||db.createObjectStore("htmlFiles")},request.onsuccess=function(e){db=e.target.result,console.log("IndexedDB is ready!");cacheHTMLWithIndexedDB("offlinePageWithJS",extractHTMLContent())},request.onerror=function(e){console.error("Error opening IndexedDB:",e.target.error)},window.onload=function(){if("serviceWorker"in navigator?isServiceWorkerActive()?console.log("Service Worker is active and controlling the page:",navigator.serviceWorker.controller):console.log("No active Service Worker controlling this page."):console.log("Service Worker is not supported in this browser."),!navigator.onLine)if(isServiceWorkerActive())console.log("Using cached content from the service worker.");else{const e=db.transaction("htmlFiles","readonly").objectStore("htmlFiles").get("offlinePageWithJS");e.onsuccess=function(e){const o=e.target.result;if(o){document.body.innerHTML="",console.log("Displaying cached HTML from IndexedDB.");const e=document;e.open(),e.write(o),e.close()}else console.log("No cached HTML found.")},e.onerror=function(e){console.error("Error retrieving cached HTML:",e.target.error)}}};</script>
+</body>
+</html>
+
+
+
+
