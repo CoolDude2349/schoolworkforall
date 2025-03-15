@@ -10,5 +10,5 @@ If data uri's are blocked, follow these steps (Use only the full data uri in thi
 6. Click one of the buttons.
 7. Enjoy!
 
-It might also work just by turning off wifi and going to the data uri. 
+It might also work just by turning off wifi, while still doing steps 3-7. 
 
