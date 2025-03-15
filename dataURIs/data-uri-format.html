@@ -12,7 +12,7 @@
     function openNewPage() {
       const newWindow = window.open('https://classroom.google.com', '_blank');
       newWindow.document.write('<!DOCTYPE html><html><head><title>Buttons</title></head><body>');
-      newWindow.document.write('<h1>Select a URL</h1>');
+      
       
       // url list
       const urls = [
@@ -34,15 +34,43 @@
 
           observer.observe(document.documentElement, { childList: true, subtree: true });
           
+            
+          
           function showIframe(url) {
-            const container = document.getElementById('iframe-container');
+           document.documentElement.style.overflowX = 'hidden';
+document.body.style.overflowX = 'hidden';
+          document.documentElement.style.overflowY = 'hidden';
+document.body.style.overflowY = 'hidden';
+          	const buttons = document.querySelectorAll('button');
+        buttons.forEach(button => button.remove());
+        const container = document.getElementById('iframe-container');
             container.style.height = '100vh';
+            container.style.width = '100%';
+            container.focus()
+           
+            
             container.innerHTML = '';
             const iframe = document.createElement('iframe');
             iframe.src = url;
             iframe.width = '100%';
             iframe.height = '100%';
             container.appendChild(iframe);
+             var iframePosition = iframe.getBoundingClientRect().top + window.scrollY;
+            
+            // Scroll to the iframe's position
+            window.scrollTo({
+                top: iframePosition,
+                behavior: 'smooth'  // Optional: for smooth scrolling
+            });
+             
+             iframe.scrolling = "no"
+            iframe.onload = () => {
+    iframe.contentWindow.focus();
+     iframe.addEventListener('focus', () => {
+      document.body.style.overflow = 'hidden';
+    });
+   
+  };
           }
         <\/script>
       `);
