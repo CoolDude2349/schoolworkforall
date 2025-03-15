@@ -11,6 +11,7 @@ You can also fork this repo and host it over there. Just be prepeared to change 
 Links for the most op pages (for offline mode): 
 
 https://cooldude2349.github.io/schoolworkforall/
+https://cooldude2349.github.io/schoolworkforall/ultimate.html
 https://cooldude2349.github.io/schoolworkforall/fetch/script-src-ultimate.html
 https://cooldude2349.github.io/schoolworkforall/fetch/fetch-ultimate.html
 https://cooldude2349.github.io/schoolworkforall/code-inputer.html
@@ -20,6 +21,7 @@ https://cooldude2349.github.io/schoolworkforall/simple-iframe2.html
 
 Links for code to place in code editors:
 
+https://github.com/CoolDude2349/schoolworkforall/blob/main/ultimate.html
 https://github.com/CoolDude2349/schoolworkforall/blob/main/no-aboutblank.html
 https://github.com/CoolDude2349/schoolworkforall/blob/main/drag_file.html
 https://github.com/CoolDude2349/schoolworkforall/blob/main/fetch/script-src.html
@@ -32,5 +34,6 @@ https://github.com/CoolDude2349/schoolworkforall/blob/main/math_frame_in_new_tab
 https://github.com/CoolDude2349/schoolworkforall/blob/main/fetch/script-src-khanacademy.html
 https://github.com/CoolDude2349/schoolworkforall/blob/main/fetch/script-khan-aboutblank.html
 https://github.com/CoolDude2349/schoolworkforall/blob/main/fetch/script-src-in-khan.html
+
 
 Have fun learning!!
