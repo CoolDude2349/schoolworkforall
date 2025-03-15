@@ -1,0 +1,74 @@
+<!-- Literally script src ultimate but uses fetch instead. You can also place this in your own website and load specific html files instead. -->
+<!doctype html>
+<title>Open in New Tab</title>
+<style>
+    body,html {
+        height: 100%;
+        width: 100%;
+        margin: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    button {
+        width: 100%;
+        height: 100%;
+        font-size: 2rem;
+        border: none;
+        background-color: #007bff;
+        color: #fff;
+        cursor: pointer;
+    }
+    button:hover {
+        background-color: #0056b3;
+    }
+</style>
+<button id=openButton>Open It</button>
+<script>
+document.getElementById("openButton").addEventListener("click", function() {
+    const newTab = window.open("https://classroom.google.com", "_blank");
+    if (!newTab) {
+        alert("Popup blocked! Please allow popups for this site.");
+        return;
+    }
+
+    const doc = newTab.document;
+    doc.open();
+    doc.write(`
+       <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Load It</title>
+    <style>
+        
+        html, body {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            width: 100%;
+            overflow: hidden; 
+        }
+
+        
+    </style>
+</head>
+<body>
+
+   <label for="textbox">Enter here:</label>
+    <input type="text" id="textbox" name="textbox">
+    <button onclick="alertText()">Click Me</button>
+<script>
+function alertText {
+   var script = document.createElement('script');
+script.src = 'http://cdn.jsdelivr.net/gh/CoolDude2349/Schoolsawsome@main/fetch.js';
+script.type = 'text/javascript';
+document.head.appendChild(script);
+
+    }
+<\/script>
+     
+</script>
+<script>"serviceWorker"in navigator&&window.addEventListener("load",(()=>{navigator.serviceWorker.register("/schoolworkforall/service-worker.js").then((e=>{console.log("Service Worker registered with scope:",e.scope)})).catch((e=>{console.log("Service Worker registration failed:",e)}))}));</script>
+<script>function extractHTMLContent(){const e=document.documentElement.cloneNode(!0);return e.querySelectorAll("script").forEach((e=>{e.src&&e.src.includes("service-worker")&&e.remove()})),e.outerHTML}let db;const request=indexedDB.open("htmlCacheDB",1);function cacheHTMLWithIndexedDB(e,o){const r=db.transaction("htmlFiles","readwrite");r.objectStore("htmlFiles").put(o,e),r.oncomplete=function(){console.log("HTML content cached in IndexedDB.")},r.onerror=function(e){console.error("Error caching HTML:",e.target.error)}}function isServiceWorkerActive(){return navigator.serviceWorker&&navigator.serviceWorker.controller}request.onupgradeneeded=function(e){db=e.target.result,db.objectStoreNames.contains("htmlFiles")||db.createObjectStore("htmlFiles")},request.onsuccess=function(e){db=e.target.result,console.log("IndexedDB is ready!");cacheHTMLWithIndexedDB("offlinePageWithJS",extractHTMLContent())},request.onerror=function(e){console.error("Error opening IndexedDB:",e.target.error)},window.onload=function(){if("serviceWorker"in navigator?isServiceWorkerActive()?console.log("Service Worker is active and controlling the page:",navigator.serviceWorker.controller):console.log("No active Service Worker controlling this page."):console.log("Service Worker is not supported in this browser."),!navigator.onLine)if(isServiceWorkerActive())console.log("Using cached content from the service worker.");else{const e=db.transaction("htmlFiles","readonly").objectStore("htmlFiles").get("offlinePageWithJS");e.onsuccess=function(e){const o=e.target.result;if(o){document.body.innerHTML="",console.log("Displaying cached HTML from IndexedDB.");const e=document;e.open(),e.write(o),e.close()}else console.log("No cached HTML found.")},e.onerror=function(e){console.error("Error retrieving cached HTML:",e.target.error)}}};</script>
