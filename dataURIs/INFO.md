@@ -1,5 +1,7 @@
 Just a collection of educational school works but in data uri's. Note: Local storage will not work inside data uri's, so progress might be lost. 
 
+--NOT FOR EAGTEK--
+
 If data uri's are blocked, follow these steps (Use only the full data uri in this folder)
 
 1. Sign out.
