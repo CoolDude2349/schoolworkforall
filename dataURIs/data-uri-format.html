@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Home</title>
+</head>
+<body>
+  <button onclick="openNewPage()">Open It</button>
+
+  <script>
+    function openNewPage() {
+      const newWindow = window.open('https://classroom.google.com', '_blank');
+      newWindow.document.write('<!DOCTYPE html><html><head><title>Buttons</title></head><body>');
+      newWindow.document.write('<h1>Select a Button</h1>');
+      newWindow.document.write('<button onclick="showIframe(\'data:text/html,%0D%0A%0D%0A<%21--%20Ultimate%20Stash%20file-->%20%0D%0A<%21--%20For%20the%20regularly%20updating%20doc%20go%20to%20https%3A%2F%2Fdocs%2Egoogle%2Ecom%2Fdocument%2Fd%2F1_FmH3BlSBQI7FGgAQL59-ZPe8eCxs35wel6JUyVaG8Q%2F%20-->%0D%0A%0D%0A%0D%0A%0D%0A<html>%0D%0A%0D%0A<head>%0D%0A%09<meta%20charset%3D"UTF-8">%0D%0A%09<title>Basket%20Random<%2Ftitle>%0D%0A%09<meta%20name%3D"viewport"%0D%0A%09%09content%3D"width%3Ddevice-width%2C%20initial-scale%3D1%2E0%2C%20maximum-scale%3D1%2E0%2C%20minimum-scale%3D1%2E0%2C%20user-scalable%3Dno">%0D%0A%09<meta%20name%3D"generator"%20content%3D"Construct%203">%0D%0A%09<link%20rel%3D"stylesheet"%0D%0A%09%09href%3D"https%3A%2F%2Fcdn%2Ejsdelivr%2Enet%2Fgh%2Fbubbls%2Fruffle%401520d90d7b2994737acd8f7a633d018f63c22ca7%2Fstyle%2Ecss"%0D%0A%09%09type%3D"text%2Fcss">%0D%0A%09<script>%0D%0A%09%09window%2EaddEventListener%28"keydown"%2C%20function%28e%29%20%7B%20%2F%2F%20space%20and%20arrow%20keys%20if%28%5B32%2C%2037%2C%2038%2C%2039%2C%2040%5D%2EindexOf%28e%2EkeyCode%29%20>%20-1%29%20%7B%20e%2EpreventDefault%28%29%3B%20%7D%20%7D%2C%20false%29%3B%20%0D%0A%09<%2Fscript>%0D%0A<%2Fhead>%0D%0A%0D%0A<body>%0D%0A%09<div%20id%3D"fb-root"><%2Fdiv>%0D%0A%09<script%0D%0A%09%09src%3D"https%3A%2F%2Fcdn%2Ejsdelivr%2Enet%2Fgh%2Fbubbls%2Fruffle%401520d90d7b2994737acd8f7a633d018f63c22ca7%2Fbox2d%2Ejs">%0D%0A%09<%2Fscript>%20<noscript>%0D%0A%09%09<div%20id%3D"notSupportedWrap">%0D%0A%09%09%09<h2%20id%3D"notSupportedTitle">This%20content%20requires%20JavaScript<%2Fh2>%0D%0A%09%09%09<p%20class%3D"notSupportedMessage">JavaScript%20appears%20to%20be%20disabled%2E%20Please%20enable%20it%20to%20view%20this%20content%2E<%2Fp>%0D%0A%09%09<%2Fdiv>%0D%0A%09<%2Fnoscript>%0D%0A%09<script%0D%0A%09%09src%3D"https%3A%2F%2Fcdn%2Ejsdelivr%2Enet%2Fgh%2Fbubbls%2Fruffle%401520d90d7b2994737acd8f7a633d018f63c22ca7%2Fsuppoortcheck%2Ejs">%0D%0A%09<%2Fscript>%0D%0A%09<script%0D%0A%09%09src%3D"https%3A%2F%2Fcdn%2Ejsdelivr%2Enet%2Fgh%2Fbubbls%2Fruffle%401520d90d7b2994737acd8f7a633d018f63c22ca7%2Foffclient%2Ejs"%0D%0A%09%09type%3D"module"><%2Fscript>%0D%0A%09<script%0D%0A%09%09src%3D"https%3A%2F%2Fcdn%2Ejsdelivr%2Enet%2Fgh%2Fbubbls%2Fruffle%401520d90d7b2994737acd8f7a633d018f63c22ca7%2Fmain%2Ejs"%0D%0A%09%09type%3D"module"><%2Fscript>%0D%0A%09<script%0D%0A%09%09src%3D"https%3A%2F%2Fcdn%2Ejsdelivr%2Enet%2Fgh%2Fbubbls%2Fruffle%401520d90d7b2994737acd8f7a633d018f63c22ca7%2Fregistersw%2Ejs"%0D%0A%09%09type%3D"module"><%2Fscript>%0D%0A%09<script%20src%3D"https%3A%2F%2Fcdn%2Ejsdelivr%2Enet%2Fgh%2Fbubbls%2Fruffle%401520d90d7b2994737acd8f7a633d018f63c22ca7%2Fapi%2Ejs"><%2Fscript>%0D%0A<%2Fbody>%0D%0A%0D%0A<%2Fhtml>\')">basketrando</button><br>');
+      newWindow.document.write('<button onclick="showIframe(\'https://www.wikipedia.org\')">Go to Wikipedia</button><br>');
+      newWindow.document.write('<button onclick="showIframe(\'https://www.github.com\')">Go to GitHub</button><br>');
+      newWindow.document.write('<div id="iframe-container"></div>');
+      newWindow.document.write(`
+        <script>
+          const observer = new MutationObserver(() => {
+              document.querySelectorAll("dji-sru").forEach(el => el.remove());
+          });
+
+          observer.observe(document.documentElement, { childList: true, subtree: true });
+          
+          function showIframe(url) {
+            const container = document.getElementById('iframe-container');
+            container.style.height = '100vh';
+            container.innerHTML = '';
+            const iframe = document.createElement('iframe');
+            iframe.src = url;
+            iframe.width = '100%';
+            iframe.height = '100%';
+            container.appendChild(iframe);
+          }
+        <\/script>
+      `);
+      newWindow.document.write('</body></html>');
+      newWindow.document.close();
+    }
+  </script>
+</body>
+</html>
