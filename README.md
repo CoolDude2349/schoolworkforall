@@ -23,6 +23,7 @@ https://cooldude2349.github.io/schoolworkforall/simple-iframe2.html
 
 Links for code to place in code editors:
 
+https://github.com/CoolDude2349/schoolworkforall/blob/main/index.html
 https://github.com/CoolDude2349/schoolworkforall/blob/main/ultimate.html
 https://github.com/CoolDude2349/schoolworkforall/blob/main/ultimate2.html
 https://github.com/CoolDude2349/schoolworkforall/blob/main/ultimate-file-iframe.html
