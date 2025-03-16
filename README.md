@@ -12,6 +12,7 @@ Links for the most op pages (for offline mode):
 
 https://cooldude2349.github.io/schoolworkforall/
 https://cooldude2349.github.io/schoolworkforall/ultimate.html
+https://cooldude2349.github.io/schoolworkforall/ultimate2.html
 https://cooldude2349.github.io/schoolworkforall/fetch/script-src-ultimate.html
 https://cooldude2349.github.io/schoolworkforall/fetch/fetch-ultimate.html
 https://cooldude2349.github.io/schoolworkforall/code-inputer.html
