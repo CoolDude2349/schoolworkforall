@@ -13,6 +13,7 @@ Links for the most op pages (for offline mode):
 https://cooldude2349.github.io/schoolworkforall/
 https://cooldude2349.github.io/schoolworkforall/ultimate.html
 https://cooldude2349.github.io/schoolworkforall/ultimate2.html
+https://github.com/CoolDude2349/schoolworkforall/blob/main/ultimate-file-iframe.html
 https://cooldude2349.github.io/schoolworkforall/fetch/script-src-ultimate.html
 https://cooldude2349.github.io/schoolworkforall/fetch/fetch-ultimate.html
 https://cooldude2349.github.io/schoolworkforall/code-inputer.html
@@ -23,6 +24,7 @@ https://cooldude2349.github.io/schoolworkforall/simple-iframe2.html
 Links for code to place in code editors:
 
 https://github.com/CoolDude2349/schoolworkforall/blob/main/ultimate.html
+https://github.com/CoolDude2349/schoolworkforall/blob/main/ultimate-file-iframe.html
 https://github.com/CoolDude2349/schoolworkforall/blob/main/no-aboutblank.html
 https://github.com/CoolDude2349/schoolworkforall/blob/main/drag_file.html
 https://github.com/CoolDude2349/schoolworkforall/blob/main/fetch/script-src.html
