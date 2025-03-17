@@ -27,6 +27,7 @@ https://github.com/CoolDude2349/schoolworkforall/blob/main/index.html
 https://github.com/CoolDude2349/schoolworkforall/blob/main/ultimate.html
 https://github.com/CoolDude2349/schoolworkforall/blob/main/ultimate-file-iframe.html
 https://github.com/CoolDude2349/schoolworkforall/blob/main/no-aboutblank.html
+https://github.com/CoolDude2349/schoolworkforall/blob/main/yes-aboutblank.html
 https://github.com/CoolDude2349/schoolworkforall/blob/main/drag_file.html
 https://github.com/CoolDude2349/schoolworkforall/blob/main/fetch/script-src.html
 https://github.com/CoolDude2349/schoolworkforall/blob/main/fetch/script-src-ultimate.html
