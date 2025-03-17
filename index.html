@@ -62,6 +62,17 @@
                         iframe.style.height = '100vh';
                         iframe.style.border = 'none';
                         document.body.appendChild(iframe);
+                        document.body.style.overflow = 'hidden';
+
+                         var iframePosition = iframe.getBoundingClientRect().top + window.scrollY;
+            
+            
+            window.scrollTo({
+                top: iframePosition,
+                behavior: 'smooth'  
+            });
+             
+             iframe.scrolling = "no"
 
                         const doc = iframe.contentWindow.document;
                         doc.open();
