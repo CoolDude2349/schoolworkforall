@@ -33,6 +33,7 @@ https://github.com/CoolDude2349/schoolworkforall/blob/main/fetch/script-src.html
 https://github.com/CoolDude2349/schoolworkforall/blob/main/fetch/script-src-ultimate.html
 https://github.com/CoolDude2349/schoolworkforall/blob/main/secure-iframe.html
 https://github.com/CoolDude2349/schoolworkforall/blob/main/very-op-math.html
+https://github.com/CoolDude2349/schoolworkforall/blob/main/khanacademy/khan-main-file.html
 https://github.com/CoolDude2349/schoolworkforall/blob/main/khanacademy/script-src-khanacademy.html
 https://github.com/CoolDude2349/schoolworkforall/blob/main/khanacademy/script-khan-aboutblank.html
 https://github.com/CoolDude2349/schoolworkforall/blob/main/khanacademy/script-src-in-khan.html
