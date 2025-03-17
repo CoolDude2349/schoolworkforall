@@ -10,3 +10,5 @@ Here is what to do:
 6. Once the iframe shows the content, click the button super fast.
 
 Now you can view the page you want offline using an iframe. You won't need to do steps 4 and 5. 
+
+Also (if your iframing the offline pages): You may be able to directly access it offline, since the sw and IndexedDB got initialized. 
