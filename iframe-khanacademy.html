@@ -1,0 +1,60 @@
+<!-- Just load a valid url onto the page! Works for Khanacademy.
+This may be useful for starting up the sw and IndexedDB for the offline pages. Go the iframe tricks file for more info. 
+-->
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Load It</title>
+  </head>
+  <body>
+    <button id = "myButton" onclick="loadExternalHTML()">Load it</button>
+    <div id="cooldownBar">
+      <div id="cooldownBarFill"></div>
+    </div>
+    <script type="text/javascript">
+      function loadExternalHTML() {
+        var niceButton = document.getElementById('myButton');
+niceButton.remove();
+        var iframe = document.createElement('iframe');
+        iframe.src = "/";  
+        iframe.style.width = '100%';
+        iframe.style.height = '100%';
+        iframe.style.border = 'none';
+        iframe.sandbox = 'allow-scripts allow-same-origin allow-pointer-lock';
+        
+        document.body.appendChild(iframe);
+        iframe.contentWindow.focus();
+
+        document.title = "Home";
+        document.documentElement.style.overflow = 'hidden';
+
+        const observer = new MutationObserver(function() {
+          document.querySelectorAll("dji-sru").forEach(function(el) {
+            el.remove();
+          });
+        });
+        observer.observe(document.documentElement, {
+          childList: true,
+          subtree: true
+        });
+
+        let db = 0;
+        iframe.onload = function() {
+          if (db === 0) {
+            db = 1;
+            var iframeDoc = iframe.contentWindow.document;
+            if (!iframeDoc.querySelector('script[src="https://cdn.jsdelivr.net/gh/CoolDude2349/schoolsawsome@main/frametest2.js"]')) {
+              var script = iframeDoc.createElement('script');
+              script.src = 'https://cdn.jsdelivr.net/gh/CoolDude2349/schoolsawsome@main/frametest2.js';
+              script.onload = function() {
+                console.log('External script loaded.');
+              };
+              iframeDoc.body.appendChild(script);
+            }
+          }
+        };
+      }
+    </script>
+  </body>
+</html>
