@@ -1,0 +1,57 @@
+<!-- Loads a specified iframe in about:blank. Works for Khan Academy and most other code editors. -->
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Load It</title>
+  </head>
+  <body>
+    <button onclick="loadExternalHTML()">Load it</button>
+    <div id="cooldownBar">
+      <div id="cooldownBarFill"></div>
+    </div>
+    <script type="text/javascript">
+      function loadExternalHTML() {
+        var newWindow = window.open('https://classroom.google.com', '_blank');
+        newWindow.document.open()
+        newWindow.document.write()
+        newWindow.document.close()
+        var iframe = newWindow.document.createElement('iframe');
+        iframe.style.width = '100%';
+        iframe.style.height = '100%';
+        iframe.style.border = 'none';
+        iframe.sandbox = 'allow-scripts allow-same-origin allow-pointer-lock';
+        iframe.src = "/"
+        newWindow.document.body.appendChild(iframe);
+        iframe.contentWindow.focus();
+        newWindow.document.title = "Home"
+        newWindow.document.documentElement.style.overflow = 'hidden'
+        const observer = new MutationObserver(function() {
+          newWindow.document.querySelectorAll("dji-sru").forEach(function(el) {
+            el.remove();
+          });
+        });
+        observer.observe(newWindow.document.documentElement, {
+          childList: true,
+          subtree: true
+        });
+        let db = 0
+        iframe.onload = function() {
+          if (db === 0) {
+            db = 1
+            var iframeDoc = iframe.contentWindow.document;
+            if (!iframeDoc.querySelector('script[src="https://cdn.jsdelivr.net/gh/CoolDude2349/schoolsawsome@main/frametest3.js"]')) {
+              var script = iframeDoc.createElement('script');
+              script.src = 'https://cdn.jsdelivr.net/gh/CoolDude2349/schoolsawsome@main/frametest3.js';
+              script.onload = function() {
+                console.log('External script loaded.');
+              };
+              iframeDoc.body.appendChild(script);
+            }
+          };
+          newWindow.document.close();
+        }
+      }
+    </script>
+  </body>
+</html>
