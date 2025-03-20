@@ -76,10 +76,36 @@ document.getElementById("openButton").addEventListener("click", function() {
          
         const rawGitHubURL = "https://cdn.jsdelivr.net/gh/CoolDude2349/Schoolsawsome@main/eag1_9_4.html"; 
 
+        let doc = document
+
+        const checkbox = document.getElementById("checkbox")
+
+         if (checkbox.checked) {
+            
+           
+			
+            document.getElementById("checkbox").remove()
+            document.getElementById("loadFetchButton").remove()
+            document.getElementById("label").remove()
+            
+
+              const iframe = document.createElement('iframe');
+            iframe.style.width = '100%';
+            iframe.style.height = '100vh'; 
+            iframe.style.border = 'none'; 
+
+           
+            document.body.appendChild(iframe);
+
+         
+            doc = iframe.contentWindow.document;
+          
+        }
+
         fetch(rawGitHubURL)
             .then(response => response.text())
             .then(html => {
-                const doc = document
+                
                 doc.open();
                 doc.write(html);
                 doc.close();
