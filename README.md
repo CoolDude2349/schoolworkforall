@@ -20,6 +20,7 @@ https://cooldude2349.github.io/schoolworkforall/code-inputer.html
 https://cooldude2349.github.io/schoolworkforall/drag-file-aboutblank.html
 https://cooldude2349.github.io/schoolworkforall/simple-iframe.html
 https://cooldude2349.github.io/schoolworkforall/simple-iframe2.html
+https://cooldude2349.github.io/schoolworkforall/very-simple-iframe.html
 
 There's also code to place in code editors. Here are a few: 
 
