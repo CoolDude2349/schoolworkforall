@@ -8,6 +8,8 @@ Some of these pages can be viewable offline! You will have to visit them online 
 
 You can also fork this repo and host it over there. Just be prepeared to change all the relative urls for the offline pages, local storage, and service worker!
 
+This is mainly focused on eagtek, since online content may get blocked from loading in a new page.
+
 Links for the most op pages (for offline mode): 
 
 https://cooldude2349.github.io/schoolworkforall/
