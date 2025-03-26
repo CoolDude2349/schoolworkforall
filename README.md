@@ -8,7 +8,9 @@ Some of these pages can be viewable offline! You will have to visit them online 
 
 You can also fork this repo and host it over there. Just be prepeared to change all the relative urls for the offline pages, local storage, and service worker!
 
-This is mainly focused on eagtek, since online content may get blocked from loading in a new page. The fetch and script src about blank code may get blocked.
+In my opinion, ultimate-file-iframe, ultimate 1 & 2, and the main index file are the most op for viewing offline. 
+
+This is mainly focused on eagtek or any offline content, since online content may get blocked from loading in a new page (you're not acually going to about:blank. Just a mirror of the parent page). The fetch and script src about blank code may get blocked.
 
 Links for the most op pages (for offline mode): 
 
