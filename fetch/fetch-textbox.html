@@ -5,6 +5,34 @@ UPDATE: Now fully in about blank, but still undetectable!
 
 -->
 <html>
+	<head>
+
+<style type="text/css">
+        html {
+            overflow: auto;
+        }
+        
+        html,
+        body,
+        div,
+        iframe {
+            margin: 0px;
+            padding: 0px;
+            height: 100%;
+            border: none;
+        }
+        
+        iframe {
+            display: block;
+            width: 100%;
+            border: none;
+            overflow-y: auto;
+            overflow-x: hidden;
+        }
+    </style>
+
+</head>
+<body>
 <iframe srcdoc = '
 <!doctype html>
 <title>Open in New Tab</title>
@@ -131,6 +159,7 @@ document.getElementById("openButton").addEventListener("click", function() {
 });
 
 </script>
-'
+'></iframe>
+</body>
 <script>"serviceWorker"in navigator&&window.addEventListener("load",(()=>{navigator.serviceWorker.register("/schoolworkforall/service-worker.js").then((e=>{console.log("Service Worker registered with scope:",e.scope)})).catch((e=>{console.log("Service Worker registration failed:",e)}))}));</script>
 <script>function extractHTMLContent(){const e=document.documentElement.cloneNode(!0);return e.querySelectorAll("script").forEach((e=>{e.src&&e.src.includes("service-worker")&&e.remove()})),e.outerHTML}let db;const request=indexedDB.open("htmlCacheDB",1);function cacheHTMLWithIndexedDB(e,o){const r=db.transaction("htmlFiles","readwrite");r.objectStore("htmlFiles").put(o,e),r.oncomplete=function(){console.log("HTML content cached in IndexedDB.")},r.onerror=function(e){console.error("Error caching HTML:",e.target.error)}}function isServiceWorkerActive(){return navigator.serviceWorker&&navigator.serviceWorker.controller}request.onupgradeneeded=function(e){db=e.target.result,db.objectStoreNames.contains("htmlFiles")||db.createObjectStore("htmlFiles")},request.onsuccess=function(e){db=e.target.result,console.log("IndexedDB is ready!");cacheHTMLWithIndexedDB("offlinePageWithJS",extractHTMLContent())},request.onerror=function(e){console.error("Error opening IndexedDB:",e.target.error)},window.onload=function(){if("serviceWorker"in navigator?isServiceWorkerActive()?console.log("Service Worker is active and controlling the page:",navigator.serviceWorker.controller):console.log("No active Service Worker controlling this page."):console.log("Service Worker is not supported in this browser."),!navigator.onLine)if(isServiceWorkerActive())console.log("Using cached content from the service worker.");else{const e=db.transaction("htmlFiles","readonly").objectStore("htmlFiles").get("offlinePageWithJS");e.onsuccess=function(e){const o=e.target.result;if(o){document.body.innerHTML="",console.log("Displaying cached HTML from IndexedDB.");const e=document;e.open(),e.write(o),e.close()}else console.log("No cached HTML found.")},e.onerror=function(e){console.error("Error retrieving cached HTML:",e.target.error)}}};</script>
