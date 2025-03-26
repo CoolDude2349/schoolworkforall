@@ -1,0 +1,60 @@
+<!-- Loads in kasandbox, just like script-src-khanacademy. --> 
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Load in New Tab</title>
+</head>
+<body>
+    <button id="loadButton">Load it in New Tab </button>
+    
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            document.getElementById("loadButton").addEventListener("click", function() {
+                var newTab = window.open("https://edpuzzle.com", "_blank");
+                if (!newTab) {
+                    alert("Popup blocked! Allow popups and try again.");
+                    return;
+                }
+                
+                setTimeout(function() {
+                    newTab.location.href = "/";
+                    
+                    setTimeout(function() {
+                        var doc = newTab.document;
+                        doc.open();
+                        var htmlContent = doc.createElement("html");
+                        htmlContent.setAttribute("lang", "en");
+                        
+                        var head = doc.createElement("head");
+                        var metaCharset = doc.createElement("meta");
+                        metaCharset.setAttribute("charset", "UTF-8");
+                        var metaViewport = doc.createElement("meta");
+                        metaViewport.setAttribute("name", "viewport");
+                        metaViewport.setAttribute("content", "width=device-width, initial-scale=1.0");
+                        var title = doc.createElement("title");
+                        title.textContent = "Info";             
+                        document.open()
+                        var script = doc.createElement("script");
+                        script.src = "https://cdn.jsdelivr.net/gh/CoolDude2349/schoolsawsome@main/fetch-khan3.js";
+                        
+                        head.appendChild(metaCharset);
+                        head.appendChild(metaViewport);
+                        head.appendChild(title);
+                        head.appendChild(script);
+                        document.close()
+                        var body = doc.createElement("body");
+                        
+                        htmlContent.appendChild(head);
+                        htmlContent.appendChild(body);
+                        
+                        doc.appendChild(htmlContent);
+                        doc.close();
+                    }, 2000);
+                }, 1000);
+            });
+        });
+    </script>
+</body>
+</html>
