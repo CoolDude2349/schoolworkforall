@@ -8,18 +8,18 @@ Some of these pages can be viewable offline! You will have to visit them online 
 
 You can also fork this repo and host it over there. Just be prepeared to change all the relative urls for the offline pages, local storage, and service worker!
 
-In my opinion, ultimate-file-iframe, ultimate 1 & 2, and the main index file are the most op for viewing offline. Khanacademy files lead the top for code editor scripts.
-
-This is mainly focused on eagtek or any offline content, since online content may get blocked from loading in a new page (you're not acually going to about:blank. Just a mirror of the parent page). The fetch and script src about blank code may get blocked.
+This is mainly focused on eagtek or any offline content, but you can also load online content. You can use the script src or the fetch scripts. If you have a file for it, then you can just load it up using index-online.
 
 Links for the most op pages (for offline mode): 
 
 https://cooldude2349.github.io/schoolworkforall/
+https://cooldude2349.github.io/schoolworkforall/index-online.html
 https://cooldude2349.github.io/schoolworkforall/ultimate.html
 https://cooldude2349.github.io/schoolworkforall/ultimate2.html
 https://cooldude2349.github.io/schoolworkforall/ultimate-file-iframe.html
 https://cooldude2349.github.io/schoolworkforall/fetch/script-src-ultimate.html
 https://cooldude2349.github.io/schoolworkforall/fetch/fetch-ultimate.html
+https://cooldude2349.github.io/schoolworkforall/fetch/fetch-textbox.html
 https://cooldude2349.github.io/schoolworkforall/code-inputer.html
 https://cooldude2349.github.io/schoolworkforall/drag-file-aboutblank.html
 https://cooldude2349.github.io/schoolworkforall/simple-iframe.html
