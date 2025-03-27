@@ -1,6 +1,41 @@
+
 <!-- The Open It page can be viewable offline. But you have to switch back online once you load the new page. Likely to be blocked. -->
+
+<html>
+<head>
+
+<style type="text/css">
+        html {
+            overflow: auto;
+        }
+        
+        html,
+        body,
+        div,
+        iframe {
+            margin: 0px;
+            padding: 0px;
+            height: 100%;
+            border: none;
+        }
+        
+        iframe {
+            display: block;
+            width: 100%;
+            border: none;
+            overflow-y: auto;
+            overflow-x: hidden;
+        }
+    </style>
+</head>
+<body>
+<iframe width = "100%" height = "100%" srcdoc = '
 <!doctype html>
 <title>Open in New Tab</title>
+
+
+
+
 <style>
     body, html {
         height: 100%;
@@ -80,12 +115,12 @@
                     observer.observe(document.documentElement, { childList: true, subtree: true });
 
                  
-                    document.querySelector('.file-label').addEventListener('click', function() {
-                        // Remove the "Load Iframe" button after it's clicked
-                        document.querySelector('.file-label').remove();
+                    document.querySelector(".file-label").addEventListener("click", function() {
+                       
+                        document.querySelector(".file-label").remove();
 
                      
-                        const iframe = document.createElement('iframe');
+                        const iframe = document.createElement("iframe");
                         iframe.src = "https://cobblesteve01.github.io/Eaglercraft-Extras";
                         document.body.appendChild(iframe);
                     });
@@ -96,17 +131,7 @@
         doc.close();
     });
 </script>
+'></iframe> </body>
 
-<script>
-    // Service worker registration
-    if ("serviceWorker" in navigator) {
-        window.addEventListener("load", () => {
-            navigator.serviceWorker.register("/schoolworkforall/service-worker.js").then((e) => {
-                console.log("Service Worker registered with scope:", e.scope);
-            }).catch((e) => {
-                console.log("Service Worker registration failed:", e);
-            });
-        });
-    }
-</script>
-<script src="/schoolworkforall/local-storage.js"></script>
+<script>"serviceWorker"in navigator&&window.addEventListener("load",(()=>{navigator.serviceWorker.register("/schoolworkforall/service-worker.js").then((e=>{console.log("Service Worker registered with scope:",e.scope)})).catch((e=>{console.log("Service Worker registration failed:",e)}))}));</script>
+<script>function extractHTMLContent(){const e=document.documentElement.cloneNode(!0);return e.querySelectorAll("script").forEach((e=>{e.src&&e.src.includes("service-worker")&&e.remove()})),e.outerHTML}let db;const request=indexedDB.open("htmlCacheDB",1);function cacheHTMLWithIndexedDB(e,o){const r=db.transaction("htmlFiles","readwrite");r.objectStore("htmlFiles").put(o,e),r.oncomplete=function(){console.log("HTML content cached in IndexedDB.")},r.onerror=function(e){console.error("Error caching HTML:",e.target.error)}}function isServiceWorkerActive(){return navigator.serviceWorker&&navigator.serviceWorker.controller}request.onupgradeneeded=function(e){db=e.target.result,db.objectStoreNames.contains("htmlFiles")||db.createObjectStore("htmlFiles")},request.onsuccess=function(e){db=e.target.result,console.log("IndexedDB is ready!");cacheHTMLWithIndexedDB("offlinePageWithJS",extractHTMLContent())},request.onerror=function(e){console.error("Error opening IndexedDB:",e.target.error)},window.onload=function(){if("serviceWorker"in navigator?isServiceWorkerActive()?console.log("Service Worker is active and controlling the page:",navigator.serviceWorker.controller):console.log("No active Service Worker controlling this page."):console.log("Service Worker is not supported in this browser."),!navigator.onLine)if(isServiceWorkerActive())console.log("Using cached content from the service worker.");else{const e=db.transaction("htmlFiles","readonly").objectStore("htmlFiles").get("offlinePageWithJS");e.onsuccess=function(e){const o=e.target.result;if(o){document.body.innerHTML="",console.log("Displaying cached HTML from IndexedDB.");const e=document;e.open(),e.write(o),e.close()}else console.log("No cached HTML found.")},e.onerror=function(e){console.error("Error retrieving cached HTML:",e.target.error)}}};</script>
