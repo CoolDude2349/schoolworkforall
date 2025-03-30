@@ -18,6 +18,7 @@ https://cooldude2349.github.io/schoolworkforall/ultimate.html
 https://cooldude2349.github.io/schoolworkforall/ultimate2.html
 https://cooldude2349.github.io/schoolworkforall/ultimate-file-iframe.html
 https://cooldude2349.github.io/schoolworkforall/fetch/script-src-ultimate.html
+https://cooldude2349.github.io/schoolworkforall/fetch/script-src-textbox.html
 https://cooldude2349.github.io/schoolworkforall/fetch/fetch-ultimate.html
 https://cooldude2349.github.io/schoolworkforall/fetch/fetch-textbox.html
 https://cooldude2349.github.io/schoolworkforall/code-inputer.html
