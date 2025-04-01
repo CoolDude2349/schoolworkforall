@@ -7,7 +7,7 @@ To start up the Service Worker and/or the IndexedDB storage:
 5. Once you see a glimpse of the page's content, immediately press Ctrl W, or use the close tab button.
 6. Quickly go back offline.
 7. Go to your chosen url once again.
-8. If you can view it offline, you can view it offline! If you are still getting blocked, then do step 1 again. Then you can go to your chosen url.
+8. If you can view it offline, then you are good! If you are still getting blocked, then do step 1 again. Then you can go to your chosen url.
 
 Once you have started up whichever one, you won't need to do the steps. You can just go directly to your chosen url, although maybe you would have to do step 1. 
 The IndexedDB storage may not last as long as the sw, so you'll have to redo the steps. 
