@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Test</title>
+</head>
+<body>
+
+
+    <script>
+        
+        function loadCachedHTML(name) {
+            if (!navigator.onLine) {
+                const request = indexedDB.open("htmlCacheDB", 1);
+
+                request.onsuccess = function (e) {
+                    const db = e.target.result;
+                    const transaction = db.transaction("htmlFiles", "readonly");
+                    const store = transaction.objectStore("htmlFiles");
+
+                    const getRequest = store.get(name);
+
+                    getRequest.onsuccess = function () {
+                        const html = getRequest.result;
+                        if (html) {
+                          
+                            document.open();
+                            document.write(html);
+                            document.close();
+                            console.log('Loaded cached HTML.');
+                        } else {
+                            console.log('No cached HTML found.');
+                        }
+                    };
+
+                    getRequest.onerror = function (e) {
+                        console.error('Error retrieving cached HTML:', e.target.error);
+                    };
+                };
+
+                request.onerror = function (e) {
+                    console.error('Error opening IndexedDB:', e.target.error);
+                };
+            } else {
+                console.log('You are online, no need to load cached content.');
+            }
+        }
+
+        
+        window.onload = function () {
+            loadCachedHTML('offlinePage');
+        };
+    </script>
+
+</body>
+</html>
