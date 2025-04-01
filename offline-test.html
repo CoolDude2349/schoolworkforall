@@ -12,7 +12,7 @@
         
         function loadCachedHTML(name) {
             if (!navigator.onLine) {
-                const request = indexedDB.open("htmlCacheDB", 1);
+                const request = indexedDB.open("education222", 1);
 
                 request.onsuccess = function (e) {
                     const db = e.target.result;
