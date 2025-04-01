@@ -10,4 +10,4 @@ To start up the Service Worker and/or the IndexedDB storage:
 8. If you can view it offline, then you are good! If you are still getting blocked, then do step 1 again. Then you can go to your chosen url.
 
 Once you have started up whichever one, you won't need to do the steps. You can just go directly to your chosen url, although maybe you would have to do step 1. 
-The IndexedDB storage may not last as long as the sw, so you'll have to redo the steps. 
+The IndexedDB storage may not last as long as the sw, so you may have to redo the steps. 
