@@ -4,7 +4,7 @@ This is a tool for helping you succeed in life and be the best that you can be.
 
 Just click the button and upload your educational file... or use the other scripts that I have made. It's that easy!
 
-Some of these pages can be viewable offline! You will have to visit them online first though. I know a trick though if it isnt working. Even if you only see a glimpse of the content, you can view it offline. 
+Some of these pages can be viewable offline! You will have to visit them online first though. I know a trick though if it isnt working. Even if you only see a glimpse of the content, you can view it offline. Find more info at offline-page-trick.md. 
 
 You can also fork this repo and host it over there. Just be prepeared to change all the relative urls for the offline pages, local storage, and service worker!
 
