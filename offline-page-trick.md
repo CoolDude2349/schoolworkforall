@@ -13,4 +13,4 @@ Once you have started up whichever one, you won't need to do the steps. You can 
 The IndexedDB storage may not last as long as the sw, so you may have to redo the steps. 
 
 
-If you prefer starting the Sw or IndexedDB with iframes, then see iframe-trick.md.
+If you prefer starting up the Sw or IndexedDB with iframes, then see iframe-trick.md.
