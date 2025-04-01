@@ -11,3 +11,6 @@ To start up the Service Worker and/or the IndexedDB storage:
 
 Once you have started up whichever one, you won't need to do the steps. You can just go directly to your chosen url, although maybe you would have to do step 1. 
 The IndexedDB storage may not last as long as the sw, so you may have to redo the steps. 
+
+
+If you prefer starting the Sw or IndexedDB with iframes, then see iframe-trick.md.
