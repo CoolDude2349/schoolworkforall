@@ -1,0 +1,409 @@
+<html>
+
+<!--
+
+Official release now!
+	
+Instead of searching for a website, you can just load your educational content here, on one single HTML file! 
+
+Most of these educational contents are not owned by me. Credit to this goes to https://docs.google.com/document/d/1_FmH3BlSBQI7FGgAQL59-ZPe8eCxs35wel6JUyVaG8Q/
+
+There are many ways to load this file. See the schoolforworkall repo for more info.
+
+UPDATE 1.3: Added even more educational content (Over 110 now)
+	
+-->
+  <head>
+
+<style>
+    
+         body {
+            margin: 0;
+            padding: 0;
+            background-image: url('https://img.freepik.com/premium-vector/binary-code-background-blue-vector_88211-920.jpg');
+            background-color: #000;
+            background-size: cover;
+            background-attachment: fixed;
+            background-position: center;
+            color: #fff;
+            font-family: Arial, sans-serif;
+            text-align: center;
+             border: solid black;
+    border-width: 6px;
+    
+        }
+        
+        h1 {
+        font-family: 'Fira Code', monospace;
+		font-size: 70px;
+        text-shadow: 
+                0 0 5px #3498db, 
+                0 0 10px #3498db, 
+                0 0 20px #3498db, 
+                0 0 40px #3498db;
+        
+         
+        }
+       
+            h2 {
+        font-family: 'Fira Code', monospace;
+        
+		font-size: 30px;
+        
+        
+         
+        }
+        
+            h4 {
+        
+        font-family: 'Fira Code', monospace;
+		font-size: 20px;
+            }
+            
+            h5{
+                
+            position: absolute;
+
+            top: 5px;
+            font-size: 18px;
+
+                
+                
+            }
+        
+        .button {
+            display: inline-block;
+            margin-top: 40px;
+            margin-left: 2px;
+            margin-right: 2px;
+            padding: 15px 25px;
+            background-color: rgba(0, 0, 252, 0.6);
+            color: white;
+            border: 3px solid black;
+            border-radius: 25px;
+         
+            font-weight: 900;
+            
+         
+            cursor: pointer;
+            transition: all 0.3s ease;
+           
+           
+              font-size: 17px;
+              font-family: 'Fira Code', monospace;
+
+              /* font-family: Verdana , sans-serif; */
+            
+            
+        }
+        
+        .checkbox-container {
+        	display: block;
+  			text-align: center;
+  			width: 100%;
+           
+            font-size: 17px;
+        }
+        
+           #button-count {
+            position: absolute;
+            left: 10px;
+            font-family: 'Fira Code', monospace;
+            background-color: rgba(0, 0, 0, 0.5);
+            color: white;
+            border-radius: 5px;
+        }
+       
+       
+        #flash-notice {
+           
+             width: 100px; 
+            padding: 7px 5px;
+
+            position: absolute;
+            right: 0px;
+            top: 80px;
+            font-family: 'Fira Code', monospace;
+            background-color: rgba(0, 0, 0, 0.5);
+            color: white;
+            border-radius: 5px;
+        }
+     
+            </style>
+  </head>
+<body>
+
+<h1>Supreme Math_</h1>
+<h5>v1.3</h5>
+<h2>Hi fellow human!</h2>
+<h4>More to be added</h4>
+
+<div id = "flash-notice"> Note: Fl(@)sh may not work since it has to use external frames. </div>
+
+<div id="button-count">Educational Content: 0</div>
+
+<label id = "checkboxlabel" class = "checkbox-container">
+<input type = "checkbox" id = "checkbox" onclick = checkboxOn() checked>
+Load in frame
+</label>
+
+<label id = "checkboxlabelscroll" class = "checkbox-container">
+<input type = "checkbox" id = "checkboxscroll" disabled >
+Remove document scrollbar on button click
+</label>
+
+<div id="button-container">
+
+<button name = "cleag1.3" class = "button"> Eag 1.3 </button>
+<button name = "cleag1-8" class = "button"> Eag 1.8 (May not work) </button>
+<button name = "academy-loader-open" class = "button"> Eag 1.9 </button>
+<button name = "cl1v1maybeidk" class = "button"> 1v1 </button>
+<button name = "clsm64" class = "button"> Sm 64 </button>
+<button name = "clsmbros" class = "button"> Sm Bros </button>
+<button name = "cltimeshooter2" class = "button"> Time Sho(o)ter 2 </button>
+<button name = "cltimeshooter3" class = "button"> Time Sho(o)ter 3 </button>
+<button name = "clslope3" class = "button"> Slope 3 </button>
+<button name = "clrun3" class = "button"> Run 3 </button>
+<button name = "clangrybirds" class = "button"> Angry birdys </button>
+<button name = "clbasketrando" class = "button"> Basket Rando </button>
+<button name = "clsoccerrando" class = "button"> Soccer Rando </button>
+<button name = "clvolleyrando" class = "button"> Volley Rando </button>
+<button name = "clboxingrando" class = "button"> Boxing Rando </button>
+<button name = "territorial" class = "button"> Territorial I0 (Single only) </button>
+<button name = "clslitherio" class = "button"> Slither </button>
+<button name = "climpossiblequiz" class = "button"> Impossible Quiz </button>
+<button name = "clpolytracksnow" class = "button"> Polytrack </button>
+<button name = "clpacman" class = "button"> Pacman </button>
+<button name = "clpizzapapa" class = "button"> Papa's Pizzeria </button>
+<button name = "clpapabakeria" class = "button"> Papa's Bakeria </button>
+<button name = "clpapasburger" class = "button"> Papa's Burgeria </button>
+<button name = "clpapaspancakeria" class = "button"> Papa's Pancakeria </button>
+<button name = "clpapaspastaria" class = "button"> Papa's Pastaria </button>
+<button name = "clsnowrider" class = "button"> Snow Rider </button>
+<button name = "clpaper" class = "button"> Paper I0 </button>
+<button name = "cldrivemad" class = "button"> Drive Mad </button>
+<button name = "clsubwaysurf" class = "button"> Subway Surf </button>
+<button name = "clcookieclick" class = "button"> Cookie Click </button>
+<button name = "clducklife" class = "button"> Duck </button>
+<button name = "clducklife2" class = "button"> Duck 2 </button>
+<button name = "clducklife3" class = "button"> Duck 3</button>
+<button name = "clducklife4" class = "button"> Duck 4</button>
+<button name = "clducklife5" class = "button"> Duck 5</button>
+<button name = "clstick" class = "button"> Stickman H00k</button>
+<button name = "clslope" class = "button"> Slope 1</button>
+<button name = "clbasketstar" class = "button"> Basket Star</button>
+<button name = "clbitplanes" class = "button"> Bit Planes</button>
+<button name = "clgeometry" class = "button"> Geometry</button>
+<button name = "clgetaway" class = "button"> Getaway Sh0(o}tout</button>
+<button name = "clhole" class = "button"> Hole I0</button>
+<button name = "clmotox3m" class = "button"> Moto x3m</button>
+<button name = "clmotox3m2" class = "button"> Moto x3m 2</button>
+<button name = "clmotox3m3" class = "button"> Moto x3m 3</button>
+<button name = "clmotox3mpoolparty" class = "button"> Moto x3m Pool Party (may not work)</button>
+<button name = "clmotox3mspookyland" class = "button"> Moto x3m Spooky Land</button>
+<button name = "clmotox3mwinter" class = "button"> Moto x3m Winter</button>
+<button name = "climpossiblequiz2" class = "button"> Impossible Quiz 2</button>
+<button name = "clcrossyroad" class = "button">Crossy Road (Can't load in a frame)</button>
+<button name = "clsmworld" class = "button">Sm world</button>
+<button name = "clsonicthehedge" class = "button">Sonic the Hedge</button>
+<button name = "cldino" class = "button">Chrome Dino</button>
+<button name = "clworldshardestg" class = "button">World's Hardest G</button>
+<button name = "cltunnelrushbetter" class = "button">Tunnel Rush</button>
+<button name = "clbitlife" class = "button">Bit Life</button>
+<button name = "cl2048" class = "button">2048</button>
+<button name = "cllearntofly" class = "button">Learn to Fly</button>
+<button name = "cllearntofly2" class = "button">Learn to Fly  2</button>
+<button name = "cllearntofly3" class = "button">Learn to Fly 3</button>
+<button name = "clrun2" class = "button">Run 2</button>
+<button name = "clvex" class = "button">Vex</button>
+<button name = "clvex2" class = "button">Vex 2</button>
+<button name = "clvex3" class = "button">Vex 3</button>
+<button name = "clvex4" class = "button">Vex 4</button>
+<button name = "clvex5" class = "button">Vex 5</button>
+<button name = "clvex6" class = "button">Vex 6</button>
+<button name = "clvex7" class = "button">Vex 7</button>
+<button name = "clvex8" class = "button">Vex 8</button>
+<button name = "clretrobowl" class = "button">Retro Bowl</button>
+<button name = "clchess" class = "button">Chess (May not work) </button>
+<button name = "cldogeminer" class = "button">Doge Miner</button>
+<button name = "cldogeminer2" class = "button">Doge Miner 2</button>
+<button name = "clfridaynightfunk" class = "button">Friday Night Funkin</button>
+<button name = "clFNAF" class = "button">FNAF</button>
+<button name = "clfunnysh2" class = "button">Funny Sho(o)ter 2 </button>
+<button name = "clsnowballio" class = "button">Snowball I0</button>
+<button name = "clagariolite" class = "button">Agar I0</button>
+<button name = "clescaperoad" class = "button">Escape Road</button>
+<button name = "clfireandwater" class = "button">Fireboy and Watergirl</button>
+<button name = "clfireandwater2" class = "button">Fireboy and Watergirl 2</button>
+<button name = "clfireandwater3" class = "button">Fireboy and Watergirl 3</button>
+<button name = "clbaldsbasics" class = "button">Bald's Basics</button>
+<button name = "clultimatecardrivingsim" class = "button">Ultimate Car Driving Sim</button>
+<button name = "cl1on1soccer" class = "button">1 On 1 Soccer</button>
+<button name = "cl1on1tennis" class = "button">1 On 1 Tennis</button>
+<button name = "clbadpiggies" class = "button">Bad Piggies</button>
+<button name = "clbloonsTD1" class = "button">BTD 1</button>
+<button name = "clbloonsTD2" class = "button">BTD 2</button>
+<button name = "clbloonsTD3" class = "button">BTD 3</button>
+<button name = "clbloonsTD4" class = "button">BTD 4</button>
+<button name = "clbloonsTD5" class = "button">BTD 5</button>
+<button name = "clbadicecream" class = "button">Bad Ice Cream</button>
+<button name = "clawesometanks" class = "button">Awesome Tanks 1</button>
+<button name = "clcardrawing" class = "button">Car Drawing</button>
+<button name = "cldriftboss" class = "button">Drift Boss</button>
+<button name = "cldrifthunters" class = "button">Drift Hunters</button>
+<button name = "cldoodle" class = "button">Doodle Jump</button>
+<button name = "clsmbreakingbank" class = "button">Henry Sm Breaking Bank Jump</button>
+<button name = "clsmescapingprison" class = "button">Henry Sm Escaping Prison</button>
+<button name = "clsmfleecomplex" class = "button">Henry Sm Fleeing the Complex</button>
+<button name = "clsmairship" class = "button">Henry Sm Infiltrating  the Airship</button>
+<button name = "clhighwayracer2" class = "button">Highway Racer 2</button>
+<button name = "clpvz" class = "button">Plants vs Zombies</button>
+<button name = "clpou" class = "button">Pou (Can't load in a frame)</button>
+<button name = "clragdollsoccer" class = "button">Ragdoll Soccer</button>
+<button name = "cltabletennisworldtour" class = "button">Table Tennis World Tour</button>
+<button name = "cltrafficjam3d" class = "button">Traffic Jam 3D</button>
+<button name = "cltinyfishing" class = "button">Tiny Fishing</button>
+<button name = "cluno" class = "button">UNO</button>
+<button name = "clwordle" class = "button">Wordle</button>
+<button name = "cltetris" class = "button">Tetris</button>
+<button name = "cldonkeykong" class = "button">Donkey Kong</button>
+<button name = "clloz" class = "button">Lege Of Zelda</button>
+<button name = "clspaceinvaders" class = "button">Space Invaders</button>
+<button name = "clhelixjump" class = "button">Helix Jump</button>
+<button name = "clawesometanks2" class = "button">Awesome Tanks 2</button>
+</div>
+
+
+<script>
+
+const checkbox = document.getElementById("checkbox")
+
+function checkboxOn() {
+    if (checkbox.checked) {
+       document.getElementById("checkboxscroll").disabled = false
+         document.getElementById("checkboxscroll").checked = true
+    }
+    else {
+        document.getElementById("checkboxscroll").disabled = true
+         document.getElementById("checkboxscroll").checked = false
+    }
+}
+
+checkboxOn()
+
+function countButtons() {
+            const buttonCount = document.querySelectorAll('#button-container button').length;
+            document.getElementById('button-count').textContent = `Educational Content: ${buttonCount}`;
+        }
+
+        // Initial count
+        countButtons();
+
+let db = 0
+
+function loadResource(event) {
+
+if (db === 0) {
+db = 1
+}
+
+let doc = document
+
+const checkboxscroll = document.getElementById("checkboxscroll")
+
+if (checkbox.checked) {
+
+
+const buttons = document.querySelectorAll('button');
+      buttons.forEach(button => {
+        button.remove() })
+        document.head.innerHTML = ""
+         document.body.innerHTML = ""
+       const iframe = document.createElement('iframe');
+        
+
+            iframe.style.width = '100%';
+            iframe.style.height = '100vh'; 
+            iframe.style.border = 'none'; 
+           
+
+           
+            document.body.appendChild(iframe);
+            iframe.focus()
+            
+           // iframe.scrolling = "no"
+           
+            
+            
+            if (checkboxscroll.checked) {
+            
+             document.body.style.overflow = 'hidden';
+             
+            }
+
+                         var iframePosition = iframe.getBoundingClientRect().top + window.scrollY;
+            
+            
+            window.scrollTo({
+                top: iframePosition,
+                behavior: 'smooth'  
+            });
+             
+           
+
+         
+            doc = iframe.contentWindow.document;
+            
+            }
+	
+      let fileName = event.target.name
+
+let url = "https://cdn.jsdelivr.net/gh/CoolDude2349/Schoolsawsome2@main/" + fileName + ".js"
+
+
+let script = document.createElement("script")
+script.src = url
+                
+                doc.open()
+                doc.write()
+                doc.close()
+                
+                doc.body.appendChild(script)
+    }
+
+   
+    window.onload = function() {
+   
+
+
+      const buttons = document.querySelectorAll('button');
+      buttons.forEach(button => {
+        button.addEventListener('click', loadResource);
+      });
+    };
+    
+    
+ let container = document.getElementById("button-container");
+      let divButtons = Array.from(container.getElementsByTagName("button"));
+      
+      divButtons.sort((a, b) => {
+        
+        let textA = a.textContent.trim()[0].toUpperCase();
+        let textB = b.textContent.trim()[0].toUpperCase();
+        
+     
+        return textA.localeCompare(textB);
+      });
+
+     
+      container.innerHTML = "";
+      divButtons.forEach(button => {
+        container.appendChild(button);
+      });
+        
+</script>
+  
+</body>
+
+  
+</html>
