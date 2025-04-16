@@ -1,8 +1,6 @@
 Schoolwork for all!!! 
 
-This is a tool for helping you succeed in life and be the best that you can be. 
-
-Just click the button and upload your educational file... or use the other scripts that I have made. It's that easy!
+This is a tool for helping you succeed in life and be the best that you can be. Just click the button and upload your educational file... or use the other scripts that I have made. It's that easy!
 
 Some of these pages can be viewable offline! You will have to visit them online first though. I know a trick though if it isnt working. Even if you only see a glimpse of the content, you can view it offline. Find more info at offline-page-trick.md. 
 
@@ -10,7 +8,7 @@ You can also fork this repo and host it over there. Just be prepeared to change 
 
 This is mainly focused on eagtek or any offline content, but you can also load online content. You can use the script src or the fetch scripts. If you have a file for it, then you can just load it up using index-online.
 
-For any script src code, if you don't want to load 1.9, you can load 1.8 by using https://cdn.jsdelivr.net/gh/CoolDude2349/Schoolsawsome@main/academy-loader-open1.8.js
+For any script src code, if you don't want to load 1.9, you can load 1.8 by using https://cdn.jsdelivr.net/gh/CoolDude2349/schoolsawsome@main/academy-loader-open1.8.js (Just add 1.8 after open)
 
 Links for the most op pages (for offline mode): 
 
