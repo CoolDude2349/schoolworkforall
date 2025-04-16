@@ -10,7 +10,7 @@ You can also fork this repo and host it over there. Just be prepeared to change 
 
 This is mainly focused on eagtek or any offline content, but you can also load online content. You can use the script src or the fetch scripts. If you have a file for it, then you can just load it up using index-online.
 
-For any script src code, if you don't want to load 1.9, you can load 1.8 by using https://cdn.jsdelivr.net/gh/CoolDude2349/Schoolsawsome2@main/academy-loader-open1.8.js
+For any script src code, if you don't want to load 1.9, you can load 1.8 by using https://cdn.jsdelivr.net/gh/CoolDude2349/Schoolsawsome@main/academy-loader-open1.8.js
 
 Links for the most op pages (for offline mode): 
 
