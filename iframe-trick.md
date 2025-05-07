@@ -1,3 +1,5 @@
+**MAY NOT WORK FOR NETWORK FIREWALLS.**
+
 If you can't access the offline pages because it's blocked, you can load it instead in an iframe, while offline. 
 
 Here is what to do:
