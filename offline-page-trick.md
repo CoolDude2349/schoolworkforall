@@ -1,3 +1,5 @@
+**WILL LIKELY NOT WORK FOR NETWORK FIREWALLS**
+
 To start up the Service Worker and/or the IndexedDB storage:
 
 1. Sign out and sign in while offline.
