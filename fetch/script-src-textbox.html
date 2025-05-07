@@ -92,6 +92,7 @@ document.getElementById("openButton").addEventListener("click", function() {
 
                 document.getElementById("loadScriptButton").addEventListener("click", function() {
                     const iframe = document.getElementById("dynamicIframe");
+        iframe.contentWindow.focus()
                     const doc = iframe.contentWindow.document;
                     const textbox = document.getElementById("textbox").value
                     doc.open();
