@@ -100,11 +100,12 @@
                     reader.onload = function(e) {
                         fileContent = e.target.result;
 
-                        // Create the iframe and append it after file is selected
+                     
                         const iframe = document.createElement("iframe");
                         iframe.style.width = "100%";
                         iframe.style.height = "100vh";
                         iframe.style.border = "none";
+    iframe.contentWindow.focus()
                         document.body.appendChild(iframe);
                         document.body.style.overflow = "hidden";
 
