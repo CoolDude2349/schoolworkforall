@@ -95,6 +95,7 @@ document.getElementById("openButton").addEventListener("click", function() {
 
                 document.getElementById("loadScriptButton").addEventListener("click", function() {
                     const iframe = document.getElementById("dynamicIframe");
+        iframe.contentWindow.focus()
                     const doc = iframe.contentWindow.document;
                     doc.open();
                     doc.write("<scr" + "ipt src=" + "https://cdn.jsdelivr.net/gh/CoolDude2349/schoolsawsome@main/academy-loader.js" + " onload=" + "parent.initMutationObserver()" + "></scr" + "ipt>"); 
