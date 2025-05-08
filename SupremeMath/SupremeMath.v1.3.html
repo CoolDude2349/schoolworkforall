@@ -152,6 +152,11 @@ Load in frame
 Remove document scrollbar on button click
 </label>
 
+<label id = "checkboxlabelfullscreen" class = "checkbox-container">
+<input type = "checkbox" id = "checkboxfullscreen">
+Fullscreen
+</label>
+
 <div id="button-container">
 
 <button name = "cleag1.3" class = "button"> Eag 1.3 </button>
@@ -310,6 +315,11 @@ db = 1
 
 let doc = document
 
+let checkboxfullscreen = document.getElementById("checkboxfullscreen");
+if (checkboxfullscreen.checked) {
+doc.body.requestFullscreen()
+}
+
 const checkboxscroll = document.getElementById("checkboxscroll")
 
 if (checkbox.checked) {
@@ -330,7 +340,7 @@ const buttons = document.querySelectorAll('button');
 
            
             document.body.appendChild(iframe);
-            iframe.focus()
+            iframe.contentWindow.focus()
             
            // iframe.scrolling = "no"
            
