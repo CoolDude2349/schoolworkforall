@@ -1,4 +1,5 @@
 **WILL LIKELY NOT WORK FOR NETWORK FIREWALLS.**
+(If you want a way around this, go to network-firewall-trick.md)
 
 To start up the Service Worker and/or the IndexedDB storage:
 
