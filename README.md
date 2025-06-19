@@ -10,6 +10,8 @@ This is mainly focused on eagtek or any offline content, but you can also load o
 
 For any script src code, if you don't want to load 1.9, you can load 1.8 by using https://cdn.jsdelivr.net/gh/CoolDude2349/schoolsawsome@main/academy-loader-open1.8.js (Just add 1.8 after open)
 
+If jsdelivr is blocked (which is unlikely), use https://unpkg.com/Schoolsawesome2@1.0.0/academy-loader-open.js
+
 Links for the most op pages (for offline mode): 
 
 https://cooldude2349.github.io/schoolworkforall/
