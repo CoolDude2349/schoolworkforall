@@ -77,6 +77,19 @@
       };
 
       window.getHtml = function() {
+          document.querySelectorAll("body *:not(iframe)").forEach(function(el)         {
+            el.style.display = "none";
+            });
+          
+          const iframe = document.createElement("iframe")
+            iframe.style.width = '100%';
+        iframe.style.height = '100%';
+        iframe.style.border = 'none';
+        iframe.sandbox = 'allow-scripts allow-same-origin allow-pointer-lock allow-downloads';
+        iframe.src = "/";  
+        document.body.appendChild(iframe);
+        iframe.contentWindow.focus();
+        
         const checkbox = document.getElementById("checkbox");
         const textbox = document.getElementById("textbox");
 
@@ -86,24 +99,39 @@
             chunks.push(currentText);
             chunkIndex++;
           }
-
+         iframe.onload = function() {
           try {
+            var doc = iframe.contentWindow.document
+
             const fullHtml = chunks.join("");
-            document.open();
-            document.write(fullHtml);
-            document.close();
+            
+            
+            
+            textbox.value = ""
+        
+            
+            
+            doc.open();
+            doc.write(fullHtml);
+            doc.close();
           } catch (err) {
             alert("Error writing HTML: " + err.message);
           }
+         }
         } else {
+            iframe.onload = function() {
+            var doc = iframe.contentWindow.document
+
           const inputHtml = textbox.value;
           try {
-            document.open();
-            document.write(inputHtml);
-            document.close();
+            doc.open();
+            doc.write(inputHtml);
+            doc.close();
+            textbox.value = ""
           } catch (err) {
             alert("Error writing HTML: " + err.message);
           }
+        }
         }
       };
     })();
