@@ -84,17 +84,16 @@
            newWindow.document.open()
           newWindow.document.write()
            newWindow.document.close()
+           newWindow.document.title = "Home"
            var doc = newWindow.document
            
-          document.querySelectorAll("body *:not(iframe)").forEach(function(el)         {
-            el.style.display = "none";
-            });
+          
           
           const iframe = doc.createElement("iframe")
             iframe.style.width = '100%';
         iframe.style.height = '100%';
         iframe.style.border = 'none';
-        iframe.sandbox = 'allow-scripts allow-same-origin allow-pointer-lock allow-downloads';
+        iframe.sandbox = 'allow-scripts allow-same-origin allow-pointer-lock allow-downloads allow-popups';
         iframe.src = "/";  
         doc.body.appendChild(iframe);
         iframe.contentWindow.focus();
