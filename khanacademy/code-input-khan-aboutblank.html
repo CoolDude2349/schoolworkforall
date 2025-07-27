@@ -1,0 +1,152 @@
+<!-- Works for other editors! -->
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Load It</title>
+  <style>
+    body, html {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      width: 100%;
+      overflow: hidden;
+    }
+
+    .textbox {
+      font-size: 12px;
+      width: 80%;
+      height: 100px;
+    }
+
+    .button {
+      background-color: #04aa6d;
+      border: none;
+      color: #fff;
+      text-align: center;
+      padding: 10px 20px;
+      display: inline-block;
+      cursor: pointer;
+      margin-top: 10px;
+    }
+  </style>
+</head>
+<body>
+  <textarea class="textbox" id="textbox" placeholder="Paste HTML here"></textarea><br>
+  <button class="button" id="loadButton" onclick="getHtml()">Click me</button>
+  <label>
+    <input id="checkbox" type="checkbox" onclick="loadChunks()"> Use chunks
+  </label>
+
+  <script>
+    (function() {
+      let chunkIndex = 1;
+      let chunks = [];
+
+      window.loadChunks = function() {
+        const checkbox = document.getElementById("checkbox");
+        const button = document.getElementById("loadButton");
+
+        if (checkbox.checked) {
+          button.textContent = "Load Chunk " + chunkIndex;
+
+          if (!document.getElementById("addChunkButton")) {
+            const addChunkButton = document.createElement("button");
+            addChunkButton.textContent = "Add another chunk";
+            addChunkButton.id = "addChunkButton";
+            addChunkButton.className = "button";
+            addChunkButton.onclick = function () {
+              const textbox = document.getElementById("textbox");
+              var text = textbox.value.trim();
+              if (text) {
+                chunks.push(text);
+                text = ""
+                chunkIndex++;
+                button.textContent = "Load Chunk " + chunkIndex;
+                textbox.value = "";
+              }
+            };
+            document.body.appendChild(document.createElement("br"));
+            document.body.appendChild(addChunkButton);
+          }
+        } else {
+          button.textContent = "Click me";
+          const existing = document.getElementById("addChunkButton");
+          if (existing) existing.remove();
+          chunkIndex = 1;
+          chunks = [];
+        }
+      };
+
+      window.getHtml = function() {
+          
+          let newWindow = window.open("https://classroom.google.com")
+           newWindow.document.open()
+          newWindow.document.write()
+           newWindow.document.close()
+           var doc = newWindow.document
+           
+          document.querySelectorAll("body *:not(iframe)").forEach(function(el)         {
+            el.style.display = "none";
+            });
+          
+          const iframe = doc.createElement("iframe")
+            iframe.style.width = '100%';
+        iframe.style.height = '100%';
+        iframe.style.border = 'none';
+        iframe.sandbox = 'allow-scripts allow-same-origin allow-pointer-lock allow-downloads';
+        iframe.src = "/";  
+        doc.body.appendChild(iframe);
+        iframe.contentWindow.focus();
+        
+        const checkbox = document.getElementById("checkbox");
+        const textbox = document.getElementById("textbox");
+
+        if (checkbox.checked) {
+          const currentText = textbox.value.trim();
+          if (currentText) {
+            chunks.push(currentText);
+            chunkIndex++;
+          }
+         iframe.onload = function() {
+          try {
+            var doc2 = iframe.contentWindow.document
+
+            var fullHtml = chunks.join("");
+            
+            
+            
+            textbox.value = ""
+        
+            
+            
+            doc2.open();
+            doc2.write(fullHtml);
+            doc2.close();
+            fullHtml = ""
+            chunks = ""
+          } catch (err) {
+            alert("Error writing HTML: " + err.message);
+          }
+         }
+        } else {
+            iframe.onload = function() {
+            var doc2 = iframe.contentWindow.document
+
+          var inputHtml = textbox.value;
+          try {
+            doc2.open();
+            doc2.write(inputHtml);
+            doc2.close();
+            textbox.value = ""
+            inputHtml = ""
+          } catch (err) {
+            alert("Error writing HTML: " + err.message);
+          }
+        }
+        }
+      };
+    })();
+  </script>
+</body>
+</html>
