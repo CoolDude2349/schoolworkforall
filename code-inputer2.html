@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Load It</title>
+  <style>
+    body, html {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      width: 100%;
+      overflow: hidden;
+    }
+
+    .textbox {
+      font-size: 12px;
+      width: 80%;
+      height: 100px;
+    }
+
+    .button {
+      background-color: #04aa6d;
+      border: none;
+      color: #fff;
+      text-align: center;
+      padding: 10px 20px;
+      display: inline-block;
+      cursor: pointer;
+      margin-top: 10px;
+    }
+  </style>
+</head>
+<body>
+  <textarea class="textbox" id="textbox" placeholder="Paste HTML here"></textarea><br>
+  <button class="button" id="loadButton" onclick="getHtml()">Click me</button>
+  <label>
+    <input id="checkbox" type="checkbox" onclick="loadChunks()"> Use chunks
+  </label>
+
+  <script>
+    let chunkIndex = 1;
+
+    function loadChunks() {
+      const checkbox = document.getElementById("checkbox");
+      const button = document.getElementById("loadButton");
+
+      if (checkbox.checked) {
+        button.textContent = "Load Chunk " + chunkIndex;
+
+        
+        if (!document.getElementById("addChunkButton")) {
+          const addChunkButton = document.createElement("button");
+          addChunkButton.textContent = "Add another chunk";
+          addChunkButton.id = "addChunkButton";
+          addChunkButton.className = "button";
+          addChunkButton.onclick = function () {
+            chunkIndex++;
+            button.textContent = "Load Chunk " + chunkIndex;
+          };
+          document.body.appendChild(document.createElement("br"));
+          document.body.appendChild(addChunkButton);
+        }
+      } else {
+        button.textContent = "Click me";
+        const existing = document.getElementById("addChunkButton");
+        if (existing) existing.remove();
+        chunkIndex = 1;
+      }
+    }
+
+    function getHtml() {
+      const inputHtml = document.getElementById("textbox").value;
+      document.open();
+      document.write(inputHtml);
+      document.close();
+    }
+  </script>
+</body>
+</html>
