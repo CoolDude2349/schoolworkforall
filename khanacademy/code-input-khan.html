@@ -59,6 +59,7 @@
               const text = textbox.value.trim();
               if (text) {
                 chunks.push(text);
+                text = ""
                 chunkIndex++;
                 button.textContent = "Load Chunk " + chunkIndex;
                 textbox.value = "";
@@ -114,6 +115,8 @@
             doc.open();
             doc.write(fullHtml);
             doc.close();
+            fullHtml = ""
+            chunks = ""
           } catch (err) {
             alert("Error writing HTML: " + err.message);
           }
@@ -128,6 +131,7 @@
             doc.write(inputHtml);
             doc.close();
             textbox.value = ""
+            inputHtml = ""
           } catch (err) {
             alert("Error writing HTML: " + err.message);
           }
