@@ -57,7 +57,7 @@
             addChunkButton.className = "button";
             addChunkButton.onclick = function () {
               const textbox = document.getElementById("textbox");
-              const text = textbox.value.trim();
+              var text = textbox.value.trim();
               if (text) {
                 chunks.push(text);
                 text = ""
@@ -105,7 +105,7 @@
           try {
             var doc = iframe.contentWindow.document
 
-            const fullHtml = chunks.join("");
+            var fullHtml = chunks.join("");
             
             
             
@@ -126,7 +126,7 @@
             iframe.onload = function() {
             var doc = iframe.contentWindow.document
 
-          const inputHtml = textbox.value;
+          var inputHtml = textbox.value;
           try {
             doc.open();
             doc.write(inputHtml);
