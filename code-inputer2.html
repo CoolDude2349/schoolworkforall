@@ -40,6 +40,7 @@
 
   <script>
     let chunkIndex = 1;
+    let chunks = [];
 
     function loadChunks() {
       const checkbox = document.getElementById("checkbox");
@@ -48,15 +49,20 @@
       if (checkbox.checked) {
         button.textContent = "Load Chunk " + chunkIndex;
 
-        
         if (!document.getElementById("addChunkButton")) {
           const addChunkButton = document.createElement("button");
           addChunkButton.textContent = "Add another chunk";
           addChunkButton.id = "addChunkButton";
           addChunkButton.className = "button";
           addChunkButton.onclick = function () {
-            chunkIndex++;
-            button.textContent = "Load Chunk " + chunkIndex;
+            const textbox = document.getElementById("textbox");
+            const text = textbox.value.trim();
+            if (text) {
+              chunks.push(text); 
+              chunkIndex++;
+              button.textContent = "Load Chunk " + chunkIndex;
+              textbox.value = ""; 
+            }
           };
           document.body.appendChild(document.createElement("br"));
           document.body.appendChild(addChunkButton);
@@ -66,14 +72,39 @@
         const existing = document.getElementById("addChunkButton");
         if (existing) existing.remove();
         chunkIndex = 1;
+        chunks = [];
       }
     }
 
     function getHtml() {
-      const inputHtml = document.getElementById("textbox").value;
-      document.open();
-      document.write(inputHtml);
-      document.close();
+      const checkbox = document.getElementById("checkbox");
+      const textbox = document.getElementById("textbox");
+
+      if (checkbox.checked) {
+        const currentText = textbox.value.trim();
+        if (currentText) {
+          chunks.push(currentText);
+          chunkIndex++;
+        }
+
+        try {
+          const fullHtml = chunks.join("");
+          document.open();
+          document.write(fullHtml);
+          document.close();
+        } catch (err) {
+          alert("Error writing HTML: " + err.message);
+        }
+      } else {
+        const inputHtml = textbox.value;
+        try {
+          document.open();
+          document.write(inputHtml);
+          document.close();
+        } catch (err) {
+          alert("Error writing HTML: " + err.message);
+        }
+      }
     }
   </script>
 </body>
